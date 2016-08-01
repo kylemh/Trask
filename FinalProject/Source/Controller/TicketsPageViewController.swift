@@ -4,6 +4,8 @@
 //
 //  Created by Kyle Holmberg on 8/1/16.
 //
+//  Citations for using other authors' materials
+//  __________________________________________________________________
 //
 
 import UIKit

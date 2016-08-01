@@ -225,11 +225,11 @@
 		562BB1591B5562E400B73F46 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */,
-				97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */,
-				97B552D61D4F4E1100621F98 /* MenuViewController.swift */,
-				97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */,
 				562BB1371B55627000B73F46 /* AppDelegate.swift */,
+				97B552D61D4F4E1100621F98 /* MenuViewController.swift */,
+				97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */,
+				97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */,
+				97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

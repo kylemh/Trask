@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1o4-mv-iRz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--ProjectDirectoryViewController-->
@@ -62,6 +61,7 @@
                                 <rect key="frame" x="275" y="164" width="50" height="30"/>
                                 <state key="normal" title="Tickets"/>
                                 <connections>
+                                    <action selector="menuToTicketsButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="dZu-Dg-luh"/>
                                     <segue destination="Pmn-NV-jyW" kind="presentation" identifier="TicketsSegue" id="605-Pl-tpn"/>
                                 </connections>
                             </button>
@@ -69,14 +69,15 @@
                                 <rect key="frame" x="256.5" y="294" width="87" height="30"/>
                                 <state key="normal" title="Notifications"/>
                                 <connections>
-                                    <segue destination="1uV-Ys-3NW" kind="popoverPresentation" popoverAnchorView="5td-uP-vVU" id="Oab-nk-5Ip">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <action selector="menuToNotificationsButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="QX8-cp-ElL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9x-0W-WQe">
                                 <rect key="frame" x="283.5" y="424" width="33" height="30"/>
                                 <state key="normal" title="Chat"/>
+                                <connections>
+                                    <action selector="menuToChatButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="uB5-YM-5Mc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,16 +93,11 @@
                     <navigationItem key="navigationItem" title="Variable Label: Project #" id="kaN-ay-Qmd">
                         <barButtonItem key="rightBarButtonItem" title="Directory" style="plain" id="ZMj-XO-ExZ">
                             <connections>
+                                <action selector="menuToDirectoryButton:" destination="tmd-VN-ReY" id="K92-U3-gFY"/>
                                 <segue destination="7PG-DM-Ssg" kind="presentation" identifier="DirectorySegue" id="BKN-Zs-AxE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="ChatButton" destination="D9x-0W-WQe" id="50z-zj-zRu"/>
-                        <outlet property="DirectoryNavButton" destination="ZMj-XO-ExZ" id="vY1-BH-2Hu"/>
-                        <outlet property="NotificationsButton" destination="5td-uP-vVU" id="DkV-4Z-iI1"/>
-                        <outlet property="TicketsButton" destination="I1h-nd-aRc" id="CHG-JJ-oIg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMl-2S-BAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,51 +116,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlF-0W-hUv">
-                                <rect key="frame" x="280.5" y="62" width="39" height="30"/>
+                                <rect key="frame" x="280" y="50" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
-                            </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ve3-a2-SKn">
-                                <rect key="frame" x="150" y="100" width="300" height="400"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="BHh-wz-zXD"/>
-                                    <constraint firstAttribute="width" constant="300" id="CAS-5q-Exp"/>
-                                    <constraint firstAttribute="width" constant="300" id="MRG-ax-7D9"/>
-                                    <constraint firstAttribute="height" constant="400" id="hXf-xj-1CJ"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="CAS-5q-Exp"/>
-                                        <exclude reference="hXf-xj-1CJ"/>
-                                    </mask>
-                                </variation>
                                 <connections>
-                                    <segue destination="JGk-LR-6qS" kind="embed" identifier="" id="AiQ-Rv-6M1"/>
+                                    <action selector="closeNotificationsButton:" destination="1uV-Ys-3NW" eventType="touchUpInside" id="t6c-mK-Y6L"/>
                                 </connections>
-                            </containerView>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-vm-ycb">
+                                <rect key="frame" x="150" y="100" width="300" height="400"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="jX6-Sy-zHC"/>
+                                    <constraint firstAttribute="height" constant="400" id="wqb-F7-g3x"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ve3-a2-SKn" firstAttribute="leading" secondItem="DVK-xb-KX9" secondAttribute="leadingMargin" constant="75" id="0wh-P3-Jva"/>
-                            <constraint firstItem="Ve3-a2-SKn" firstAttribute="top" secondItem="HlF-0W-hUv" secondAttribute="bottom" constant="8" id="6J5-uE-Iwx"/>
-                            <constraint firstItem="Ve3-a2-SKn" firstAttribute="centerX" secondItem="DVK-xb-KX9" secondAttribute="centerX" id="FEx-gz-SNz"/>
-                            <constraint firstItem="Ve3-a2-SKn" firstAttribute="centerY" secondItem="DVK-xb-KX9" secondAttribute="centerY" id="Wsq-AM-5QT"/>
-                            <constraint firstItem="Ve3-a2-SKn" firstAttribute="top" secondItem="KmR-EO-hax" secondAttribute="bottom" constant="75" id="Zd4-cO-qQR"/>
-                            <constraint firstItem="HlF-0W-hUv" firstAttribute="centerX" secondItem="Ve3-a2-SKn" secondAttribute="centerX" id="ehI-Zy-YSD"/>
-                            <constraint firstItem="Ve3-a2-SKn" firstAttribute="trailing" secondItem="DVK-xb-KX9" secondAttribute="trailingMargin" constant="-75" id="j3i-ZB-pNB"/>
-                            <constraint firstItem="Ve3-a2-SKn" firstAttribute="bottom" secondItem="NYe-QP-m2O" secondAttribute="top" constant="-75" id="pC2-No-L3Q"/>
+                            <constraint firstItem="bpZ-vm-ycb" firstAttribute="centerY" secondItem="DVK-xb-KX9" secondAttribute="centerY" id="C9h-vx-sYK"/>
+                            <constraint firstItem="HlF-0W-hUv" firstAttribute="centerX" secondItem="bpZ-vm-ycb" secondAttribute="centerX" id="U1J-5U-cCO"/>
+                            <constraint firstItem="bpZ-vm-ycb" firstAttribute="top" secondItem="HlF-0W-hUv" secondAttribute="bottom" constant="20" id="UuD-Pe-0ya"/>
+                            <constraint firstItem="bpZ-vm-ycb" firstAttribute="centerX" secondItem="DVK-xb-KX9" secondAttribute="centerX" id="iA6-wz-Kan"/>
+                            <constraint firstItem="HlF-0W-hUv" firstAttribute="centerX" secondItem="bpZ-vm-ycb" secondAttribute="centerX" id="qRA-r1-mvd"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="0wh-P3-Jva"/>
-                                <exclude reference="Zd4-cO-qQR"/>
-                                <exclude reference="j3i-ZB-pNB"/>
-                                <exclude reference="pC2-No-L3Q"/>
+                                <exclude reference="U1J-5U-cCO"/>
                             </mask>
                         </variation>
                     </view>
-                    <connections>
-                        <outlet property="CloseNotificationsButton" destination="HlF-0W-hUv" id="dbb-bZ-fik"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9c-17-o3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,46 +203,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="faR-Bc-bq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2547" y="-640"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="bye-l9-8yg">
-            <objects>
-                <viewController id="JGk-LR-6qS" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Z51-CV-A6K"/>
-                        <viewControllerLayoutGuide type="bottom" id="4sz-8b-YlM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cPs-wC-wZi">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="46c-t8-L7Z">
-                                <rect key="frame" x="-4" y="0.0" width="308" height="400"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationCell" id="Rkk-QB-SA1">
-                                        <rect key="frame" x="0.0" y="28" width="308" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rkk-QB-SA1" id="V8z-xT-hLf">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="46c-t8-L7Z" firstAttribute="top" secondItem="Z51-CV-A6K" secondAttribute="bottom" id="1jB-Nx-fyD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="46c-t8-L7Z" secondAttribute="trailing" constant="-20" id="cax-wo-FZr"/>
-                            <constraint firstItem="46c-t8-L7Z" firstAttribute="leading" secondItem="cPs-wC-wZi" secondAttribute="leadingMargin" constant="-20" id="den-Dl-IIs"/>
-                            <constraint firstItem="4sz-8b-YlM" firstAttribute="top" secondItem="46c-t8-L7Z" secondAttribute="bottom" id="oM8-aN-wFa"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ACi-sP-47I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1206" y="147"/>
         </scene>
     </scenes>
 </document>
