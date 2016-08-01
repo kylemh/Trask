@@ -23,6 +23,10 @@
 		56BEFF5C1B68CE58006F0664 /* NSEntityDescription_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */; };
 		56BEFF5D1B68CE58006F0664 /* NSFetchRequest_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF531B68CE58006F0664 /* NSFetchRequest_Service.swift */; };
 		56BEFF611B68CE58006F0664 /* NamedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF581B68CE58006F0664 /* NamedEntity.swift */; };
+		97B552D51D4F4DDC00621F98 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */; };
+		97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D61D4F4E1100621F98 /* MenuViewController.swift */; };
+		97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */; };
+		97B552DF1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +105,10 @@
 		56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription_Service.swift; sourceTree = "<group>"; };
 		56BEFF531B68CE58006F0664 /* NSFetchRequest_Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchRequest_Service.swift; sourceTree = "<group>"; };
 		56BEFF581B68CE58006F0664 /* NamedEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamedEntity.swift; sourceTree = "<group>"; };
+		97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		97B552D61D4F4E1100621F98 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsPageViewController.swift; sourceTree = "<group>"; };
+		97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDirectoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +225,10 @@
 		562BB1591B5562E400B73F46 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */,
+				97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */,
+				97B552D61D4F4E1100621F98 /* MenuViewController.swift */,
+				97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */,
 				562BB1371B55627000B73F46 /* AppDelegate.swift */,
 			);
 			path = Controller;
@@ -496,8 +508,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B552D51D4F4DDC00621F98 /* NotificationsViewController.swift in Sources */,
 				562BB1381B55627000B73F46 /* AppDelegate.swift in Sources */,
 				56BEFEBE1B68C3E0006F0664 /* Model.xcdatamodeld in Sources */,
+				97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */,
+				97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */,
+				97B552DF1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +693,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cis399.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -689,6 +706,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cis399.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -858,6 +876,7 @@
 				564F70AC1BEABDA3009D186E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56BEFF461B68CE0A006F0664 /* Build configuration list for PBXNativeTarget "CoreDataService" */ = {
 			isa = XCConfigurationList;
