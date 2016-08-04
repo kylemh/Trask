@@ -18,7 +18,7 @@ class NotificationsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.9)
+        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         self.showAnimate()
     }
 

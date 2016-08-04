@@ -11,6 +11,7 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    /* View Controller Overrides */
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +23,35 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /* Delegate and Segue Functions */
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    
+    func projectDirectoryTableVCDidFinish(projectDirectoryVC: ProjectDirectoryTableViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //TicketsSegue
+    //SettingsSegue
+    //Do this override for those ^
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "DirectorySegue") {
+            let navController = segue.destinationViewController as! UINavigationController
+            let directoryVC = navController.topViewController as! ProjectDirectoryTableViewController
+            directoryVC.delegate = self
+        }
+    }
+    
+    
+    /* Buttons */
     @IBAction func menuToDirectoryButton(sender: AnyObject) {
         //
     }
@@ -42,16 +72,7 @@ class MenuViewController: UIViewController {
         //
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func menuToSettingsButton(sender: AnyObject) {
+        //
     }
-    */
-    
-    
-
 }

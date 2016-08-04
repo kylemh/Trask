@@ -23,6 +23,7 @@
 		56BEFF5C1B68CE58006F0664 /* NSEntityDescription_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */; };
 		56BEFF5D1B68CE58006F0664 /* NSFetchRequest_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF531B68CE58006F0664 /* NSFetchRequest_Service.swift */; };
 		56BEFF611B68CE58006F0664 /* NamedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF581B68CE58006F0664 /* NamedEntity.swift */; };
+		977B67EF1D53A0140021D8FC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B67EE1D53A0140021D8FC /* SettingsTableViewController.swift */; };
 		97B552D51D4F4DDC00621F98 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */; };
 		97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D61D4F4E1100621F98 /* MenuViewController.swift */; };
 		97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */; };
@@ -105,6 +106,7 @@
 		56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription_Service.swift; sourceTree = "<group>"; };
 		56BEFF531B68CE58006F0664 /* NSFetchRequest_Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchRequest_Service.swift; sourceTree = "<group>"; };
 		56BEFF581B68CE58006F0664 /* NamedEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamedEntity.swift; sourceTree = "<group>"; };
+		977B67EE1D53A0140021D8FC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		97B552D61D4F4E1100621F98 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsPageViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */,
 				97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */,
 				97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */,
+				977B67EE1D53A0140021D8FC /* SettingsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */,
 				97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */,
 				97B552DF1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift in Sources */,
+				977B67EF1D53A0140021D8FC /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
