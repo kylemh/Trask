@@ -10,46 +10,39 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
-    /* View Controller Overrides */
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /* Delegate and Segue Functions */
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
-    func projectDirectoryTableVCDidFinish(projectDirectoryVC: ProjectDirectoryTableViewController) {
+class MenuViewController: UIViewController, DirectoryTableVCDelegate {
+    /* Delegate Functions */
+    func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //TicketsSegue
-    //SettingsSegue
-    //Do this override for those ^
+    func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func settingsTableVCDidFinish(settingsVC: SettingsTableViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "DirectorySegue") {
             let navController = segue.destinationViewController as! UINavigationController
             let directoryVC = navController.topViewController as! ProjectDirectoryTableViewController
             directoryVC.delegate = self
+/*
+        } else if (segue.identifier == "TicketsSegue") {
+            let navController = segue.destinationViewController as! UINavigationController
+            let ticketsVC = navController.topViewController as! TicketsPageViewController
+            ticketsVC.delegate = self
+        } else if (segue.identifier == "SettingsSegue") {
+            let navController = segue.destinationViewController as! UINavigationController
+            let settingsVC = navController.topViewController as! SettingsTableViewController
+            settingsVC.delegate = self
+        } else {
+            //is error necessary?
+ */
         }
     }
-    
     
     /* Buttons */
     @IBAction func menuToDirectoryButton(sender: AnyObject) {
@@ -74,5 +67,36 @@ class MenuViewController: UIViewController {
 
     @IBAction func menuToSettingsButton(sender: AnyObject) {
         //
+    }
+    
+    /* View Controller Functions */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //Place to do screen refresh, network request, or last-minute view setup
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        //App is loaded and ready. Commence heavy activity
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        //App has been removed from screen. Clean-up memory usage.
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        //Memory clean-up complete.
     }
 }

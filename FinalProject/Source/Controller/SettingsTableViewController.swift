@@ -8,9 +8,19 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController, UITableViewDataSource {
-    
+/*
+protocol SettingsTableVCDelegate: class {
+    func settingsTableVCDidFinish(settingsVC: SettingsTableViewController)
+}
+*/
 
+class SettingsTableViewController: UITableViewController, UITableViewDataSource {
+    @IBAction private func back(sender: AnyObject) {
+        //delegate?.settingsTableVCDidFinish(self)
+    }
+    
+    //weak var delegate : SettingsTableViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,11 +87,19 @@ class SettingsTableViewController: UITableViewController, UITableViewDataSource 
                 break
             case .Violet:
                 break
-                }
+            }
+        case .NotificationsToggle:
+            switch .NotificationsToggleRow.AllRows[indexPath.row] {
+            case .SwitchOn:
+                break
+            case .SwitchOff:
+                break
             }
         }
+    }
     
-    private enum Section {
+    //private?
+    enum Section {
         case MainColorSelector
         case SecondaryColorSelector
         case NotificationsToggle
@@ -89,7 +107,8 @@ class SettingsTableViewController: UITableViewController, UITableViewDataSource 
         static let AllSections: Array<Section> = [.MainColorSelector, .SecondaryColorSelector, .NotificationsToggle]
     }
     
-    private enum MainColorSelectorRow {
+    //private?
+    enum MainColorSelectorRow {
         case Red
         case Orange
         case Yellow
@@ -101,7 +120,8 @@ class SettingsTableViewController: UITableViewController, UITableViewDataSource 
         static let AllRows: Array<MainColorSelectorRow> = [.Red, .Orange, .Yellow, .Green, .Blue, .Indigo, .Violet]
     }
 
-    private enum SecondaryColorSelectorRow {
+    //private?
+    enum SecondaryColorSelectorRow {
         case Red
         case Orange
         case Yellow
@@ -115,7 +135,8 @@ class SettingsTableViewController: UITableViewController, UITableViewDataSource 
         static let AllRows: Array<SecondaryColorSelectorRow> = [.Red, .Orange, .Yellow, .Green, .Blue, .Indigo, .Violet, .White, .Black]
     }
     
-    private enum NotificationsToggleRow {
+    //private?
+    enum NotificationsToggleRow {
         case SwitchOn
         case SwitchOff
         
@@ -177,5 +198,4 @@ class SettingsTableViewController: UITableViewController, UITableViewDataSource 
         // Pass the selected object to the new view controller.
     }
     */
-
 }

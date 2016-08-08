@@ -10,7 +10,18 @@
 
 import UIKit
 
+/*
+protocol TicketsPageVCDelegate: class {
+    func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewController)
+}
+*/
+
 class TicketsPageViewController: UIPageViewController {
+    @IBAction private func back(sender: AnyObject) {
+        //delegate?.ticketsPageVCDidFinish(self)
+    }
+    
+    //weak var delegate : TicketsPageViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

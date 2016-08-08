@@ -29,21 +29,32 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Project Directory" id="esA-4l-daE">
                         <barButtonItem key="backBarButtonItem" title="Menu" id="Den-64-gDm"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="ypx-dc-eCx">
+                            <connections>
+                                <action selector="back:" destination="LLg-nm-UT0" id="R7B-C4-V8z"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfg-ma-CEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2547" y="-1429"/>
+            <point key="canvasLocation" x="1363" y="-653"/>
         </scene>
         <!--Tickets-->
         <scene sceneID="9QL-Hz-Dnj">
             <objects>
                 <pageViewController storyboardIdentifier="TicketsID" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="2dl-Xz-qGV" customClass="TicketsPageViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Tickets" id="VnX-ja-g9v"/>
+                    <navigationItem key="navigationItem" title="Tickets" id="VnX-ja-g9v">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="eOW-Ol-3rm">
+                            <connections>
+                                <action selector="back:" destination="2dl-Xz-qGV" id="ps5-yH-bqW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cv5-t5-8GM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3359" y="-640"/>
+            <point key="canvasLocation" x="2175" y="136"/>
         </scene>
         <!--MenuViewController-->
         <scene sceneID="Xa3-fu-F5L">
@@ -117,7 +128,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Variable Label: Project #" id="kaN-ay-Qmd">
-                        <barButtonItem key="rightBarButtonItem" title="Directory" style="plain" id="ZMj-XO-ExZ">
+                        <barButtonItem key="rightBarButtonItem" title="Directory" id="ZMj-XO-ExZ">
                             <connections>
                                 <action selector="menuToDirectoryButton:" destination="tmd-VN-ReY" id="K92-U3-gFY"/>
                                 <segue destination="7PG-DM-Ssg" kind="presentation" identifier="DirectorySegue" id="BKN-Zs-AxE"/>
@@ -127,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMl-2S-BAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="-640"/>
+            <point key="canvasLocation" x="551" y="136"/>
         </scene>
         <!--Notifications View Controller-->
         <scene sceneID="M0C-1m-K7T">
@@ -174,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9c-17-o3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="153"/>
+            <point key="canvasLocation" x="551" y="929"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AgS-6D-Ypw">
@@ -192,7 +203,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCB-IO-MgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923" y="-640"/>
+            <point key="canvasLocation" x="-261" y="136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OGm-fd-5iN">
@@ -210,7 +221,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQz-it-ahc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="-1429"/>
+            <point key="canvasLocation" x="551" y="-653"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pn7-N2-0rE">
@@ -228,12 +239,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="faR-Bc-bq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2547" y="-640"/>
+            <point key="canvasLocation" x="1363" y="136"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="doh-Ml-eak">
             <objects>
-                <tableViewController id="zLs-Bw-Tqw" customClass="SettingsTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsID" id="zLs-Bw-Tqw" customClass="SettingsTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="s9j-za-CpQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -274,12 +285,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="VhV-4o-Hzq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Z2W-MS-Lpp"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="QTa-xK-n9o">
+                            <connections>
+                                <action selector="back:" destination="zLs-Bw-Tqw" id="ueu-ao-6pY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wrS-cC-Isz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3359" y="153"/>
+            <point key="canvasLocation" x="2175" y="929"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G3w-fe-QzM">
@@ -297,7 +312,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dye-pO-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2547" y="153"/>
+            <point key="canvasLocation" x="1363" y="929"/>
         </scene>
     </scenes>
 </document>
