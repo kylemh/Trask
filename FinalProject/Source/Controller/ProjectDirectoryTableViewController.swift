@@ -15,13 +15,12 @@ protocol DirectoryTableVCDelegate: class {
     func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController)
 }
 
-
 class ProjectDirectoryTableViewController: UITableViewController {
     @IBAction private func back(sender: AnyObject) {
         delegate?.projectDirectoryTableVCDidFinish(self)
     }
     
-    weak var delegate : ProjectDirectoryTableViewController?
+    weak var delegate : DirectoryTableVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

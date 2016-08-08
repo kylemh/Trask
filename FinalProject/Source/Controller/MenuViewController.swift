@@ -10,7 +10,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController, DirectoryTableVCDelegate {
+class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, SettingsTableVCDelegate {
     /* Delegate Functions */
     func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -29,18 +29,16 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate {
             let navController = segue.destinationViewController as! UINavigationController
             let directoryVC = navController.topViewController as! ProjectDirectoryTableViewController
             directoryVC.delegate = self
-/*
         } else if (segue.identifier == "TicketsSegue") {
             let navController = segue.destinationViewController as! UINavigationController
             let ticketsVC = navController.topViewController as! TicketsPageViewController
-            ticketsVC.delegate = self
+            ticketsVC.delegateMenu = self
         } else if (segue.identifier == "SettingsSegue") {
             let navController = segue.destinationViewController as! UINavigationController
             let settingsVC = navController.topViewController as! SettingsTableViewController
             settingsVC.delegate = self
         } else {
             //is error necessary?
- */
         }
     }
     
