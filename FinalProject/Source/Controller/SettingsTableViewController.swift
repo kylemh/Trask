@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol SettingsTableVCDelegate: class {
     func settingsTableVCDidFinish(settingsVC: SettingsTableViewController)

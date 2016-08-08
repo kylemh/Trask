@@ -9,7 +9,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 protocol TicketsPageVCDelegate: class {
     func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewController)

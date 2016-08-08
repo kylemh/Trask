@@ -9,8 +9,12 @@
 //
 
 import UIKit
+import CoreData
 
 class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, SettingsTableVCDelegate {
+    /* CoreData */
+    
+    
     /* Delegate Functions */
     func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -86,6 +90,7 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         //App is loaded and ready. Commence heavy activity
+        
     }
     
     override func viewWillDisappear(animated: Bool) {

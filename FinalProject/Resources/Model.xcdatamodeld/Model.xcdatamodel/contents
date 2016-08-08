@@ -28,8 +28,8 @@
         <relationship name="parentColumn" maxCount="1" deletionRule="Nullify" destinationEntity="Columns" inverseName="childTicket" inverseEntity="Columns" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Project" positionX="-63" positionY="-18" width="128" height="165"/>
-        <element name="Ticket" positionX="-63" positionY="-18" width="128" height="180"/>
-        <element name="Columns" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Columns" positionX="-272" positionY="-63" width="128" height="105"/>
+        <element name="Project" positionX="-567" positionY="-144" width="128" height="165"/>
+        <element name="Ticket" positionX="7" positionY="-63" width="128" height="180"/>
     </elements>
 </model>

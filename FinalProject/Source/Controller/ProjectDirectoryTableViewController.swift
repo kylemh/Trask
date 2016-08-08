@@ -9,7 +9,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 protocol DirectoryTableVCDelegate: class {
     func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController)
