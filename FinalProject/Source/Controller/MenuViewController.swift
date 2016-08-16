@@ -20,7 +20,7 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewController) {
+    func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewContainerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -35,7 +35,7 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
             directoryVC.delegate = self
         } else if (segue.identifier == "TicketsSegue") {
             let navController = segue.destinationViewController as! UINavigationController
-            let ticketsVC = navController.topViewController as! TicketsPageViewController
+            let ticketsVC = navController.topViewController as! TicketsPageViewContainerController
             ticketsVC.delegateMenu = self
         } else if (segue.identifier == "SettingsSegue") {
             let navController = segue.destinationViewController as! UINavigationController

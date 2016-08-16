@@ -12,19 +12,20 @@ import UIKit
 import CoreData
 
 protocol TicketsPageVCDelegate: class {
-    func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewController)
+    func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewContainerController)
 }
 
-class TicketsPageViewController: UIPageViewController {
+class TicketsPageViewContainerController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    var pageViewController: UIPageViewController!
+    //var columnPages = ["Column1", "Column2", "Column3"]
+    weak var delegateMenu : TicketsPageVCDelegate?
+    
     @IBAction private func back(sender: AnyObject) {
         delegateMenu?.ticketsPageVCDidFinish(self)
     }
     
-    weak var delegateMenu : TicketsPageVCDelegate?
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -33,15 +34,22 @@ class TicketsPageViewController: UIPageViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "PageViewControllerEmbedSegue" {
+            pageViewController = segue.destinationViewController as! UIPageViewController
+            pageViewController.dataSource = self
+            pageViewController.delegate = self
+        }
+        else {
+            super.prepareForSegue(segue, sender: sender)
+        }
     }
-    */
-
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        return nil
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        return nil
+    }
 }
