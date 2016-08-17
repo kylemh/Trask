@@ -12,7 +12,34 @@ import UIKit
 import CoreData
 
 class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, SettingsTableVCDelegate {
+    /* Outlets and Actions */
+    @IBAction func menuToDirectoryButton(sender: AnyObject) {
+        //
+    }
+    
+    @IBAction func menuToTicketsButton(sender: AnyObject) {
+        //
+    }
+    
+    @IBAction func menuToNotificationsButton(sender: AnyObject) {
+        let notificationsPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NotificationsID") as! NotificationsViewController
+        self.addChildViewController(notificationsPopUpVC)
+        notificationsPopUpVC.view.frame = self.view.frame
+        self.view.addSubview(notificationsPopUpVC.view)
+        notificationsPopUpVC.didMoveToParentViewController(self)
+    }
+    
+    @IBAction func menuToChatButton(sender: AnyObject) {
+        //
+    }
+    
+    @IBAction func menuToSettingsButton(sender: AnyObject) {
+        //
+    }
+    
+    
     /* CoreData */
+    
     
     
     /* Delegate Functions */
@@ -46,30 +73,6 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         }
     }
     
-    /* Buttons */
-    @IBAction func menuToDirectoryButton(sender: AnyObject) {
-        //
-    }
-    
-    @IBAction func menuToTicketsButton(sender: AnyObject) {
-        //
-    }
-    
-    @IBAction func menuToNotificationsButton(sender: AnyObject) {
-        let notificationsPopUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NotificationsID") as! NotificationsViewController
-        self.addChildViewController(notificationsPopUpVC)
-        notificationsPopUpVC.view.frame = self.view.frame
-        self.view.addSubview(notificationsPopUpVC.view)
-        notificationsPopUpVC.didMoveToParentViewController(self)
-    }
-    
-    @IBAction func menuToChatButton(sender: AnyObject) {
-        //
-    }
-
-    @IBAction func menuToSettingsButton(sender: AnyObject) {
-        //
-    }
     
     /* View Controller Functions */
     override func viewDidLoad() {

@@ -1,9 +1,11 @@
 //
-//  SettingsTableViewController.swift
+//  TicketsPageViewController.swift
 //  FinalProject
 //
 //  Created by Kyle Holmberg on 8/4/16.
 //
+//  Citations for using other authors' materials
+//  __________________________________________________________________
 //
 
 import UIKit
@@ -15,14 +17,20 @@ protocol SettingsTableVCDelegate: class {
 
 //add UITableViewDataSource after table methods added
 class SettingsTableViewController: UITableViewController {
+    /* Outlets and Actions */
     @IBAction private func back(sender: AnyObject) {
         delegate?.settingsTableVCDidFinish(self)
     }
     
+    @IBAction private func edit(sender: AnyObject) {
+        //
+    }
     weak var delegate : SettingsTableVCDelegate?
     
+    /* Table View Data */
+    
+    //DO NOT UN-NOTE - BREAKS IDE//
     /*
-    //Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return Section.AllSections.count
     }
@@ -167,6 +175,8 @@ class SettingsTableViewController: UITableViewController {
     }
     */
     
+    
+    /* View Controller Functions */
     override func viewDidLoad() {
         super.viewDidLoad()
         

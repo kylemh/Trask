@@ -10,7 +10,5 @@ import CoreData
 
 
 class Ticket: Columns {
-
-// Insert code here to add functionality to your managed object subclass
-
+    //
 }

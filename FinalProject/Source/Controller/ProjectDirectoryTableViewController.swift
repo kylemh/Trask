@@ -16,29 +16,21 @@ protocol DirectoryTableVCDelegate: class {
 }
 
 class ProjectDirectoryTableViewController: UITableViewController {
+    /* Outlets and Actions */
+    @IBOutlet var projectDirectoryTableView: UITableView!
+    
     @IBAction private func back(sender: AnyObject) {
         delegate?.projectDirectoryTableVCDidFinish(self)
     }
     
+    @IBAction private func add(sender: AnyObject) {
+        //
+    }
+    
     weak var delegate : DirectoryTableVCDelegate?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
+    
+    /* Table Population */
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -94,14 +86,14 @@ class ProjectDirectoryTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    /* View Controller Functions */
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-    */
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
 }

@@ -10,7 +10,5 @@ import CoreData
 
 
 class Project: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+    //makingt his and child classes a namedentity?
 }

@@ -10,9 +10,9 @@ import CoreData
 
 extension Columns {
 
-    @NSManaged var columnName: String?
-    @NSManaged var columnTicketCount: NSNumber?
+    @NSManaged var columnName: String
+    @NSManaged var columnTicketCount: NSNumber
     @NSManaged var childTicket: NSSet?
-    @NSManaged var parentProject: Project?
+    @NSManaged var parentProject: Project
 
 }

@@ -22,7 +22,6 @@
 		56BEFF5B1B68CE58006F0664 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF501B68CE58006F0664 /* CoreDataService.swift */; };
 		56BEFF5C1B68CE58006F0664 /* NSEntityDescription_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */; };
 		56BEFF5D1B68CE58006F0664 /* NSFetchRequest_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF531B68CE58006F0664 /* NSFetchRequest_Service.swift */; };
-		56BEFF611B68CE58006F0664 /* NamedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF581B68CE58006F0664 /* NamedEntity.swift */; };
 		975DCA331D58F5290017042A /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DCA2D1D58F5290017042A /* Project+CoreDataProperties.swift */; };
 		975DCA341D58F5290017042A /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DCA2E1D58F5290017042A /* Project.swift */; };
 		975DCA351D58F5290017042A /* Columns+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DCA2F1D58F5290017042A /* Columns+CoreDataProperties.swift */; };
@@ -30,6 +29,9 @@
 		975DCA371D58F5290017042A /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DCA311D58F5290017042A /* Ticket+CoreDataProperties.swift */; };
 		975DCA381D58F5290017042A /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DCA321D58F5290017042A /* Ticket.swift */; };
 		977B67EF1D53A0140021D8FC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B67EE1D53A0140021D8FC /* SettingsTableViewController.swift */; };
+		978B7AD41D62F85500172F1B /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7AD31D62F85500172F1B /* ColumnViewController.swift */; };
+		978B7AD51D6372A300172F1B /* NamedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF581B68CE58006F0664 /* NamedEntity.swift */; };
+		978B7AD71D6379A600172F1B /* ProjectDirectoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7AD61D6379A600172F1B /* ProjectDirectoryTableViewCell.swift */; };
 		97B552D51D4F4DDC00621F98 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */; };
 		97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D61D4F4E1100621F98 /* MenuViewController.swift */; };
 		97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */; };
@@ -119,6 +121,8 @@
 		975DCA311D58F5290017042A /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		975DCA321D58F5290017042A /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		977B67EE1D53A0140021D8FC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		978B7AD31D62F85500172F1B /* ColumnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
+		978B7AD61D6379A600172F1B /* ProjectDirectoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectDirectoryTableViewCell.swift; path = FinalProject/Source/Controller/ProjectDirectoryTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		97B552D61D4F4E1100621F98 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsPageViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				562BB1361B55627000B73F46 /* Info.plist */,
 				562BB1401B55627000B73F46 /* LaunchScreen.xib */,
 				562BB13B1B55627000B73F46 /* Main.storyboard */,
+				978B7AD61D6379A600172F1B /* ProjectDirectoryTableViewCell.swift */,
 				56BEFEBC1B68C3E0006F0664 /* Model.xcdatamodeld */,
 			);
 			path = Resources;
@@ -244,6 +249,7 @@
 				97B552D61D4F4E1100621F98 /* MenuViewController.swift */,
 				97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */,
 				97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */,
+				978B7AD31D62F85500172F1B /* ColumnViewController.swift */,
 				97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */,
 				977B67EE1D53A0140021D8FC /* SettingsTableViewController.swift */,
 			);
@@ -541,11 +547,13 @@
 				97B552D51D4F4DDC00621F98 /* NotificationsViewController.swift in Sources */,
 				562BB1381B55627000B73F46 /* AppDelegate.swift in Sources */,
 				975DCA331D58F5290017042A /* Project+CoreDataProperties.swift in Sources */,
+				978B7AD71D6379A600172F1B /* ProjectDirectoryTableViewCell.swift in Sources */,
 				56BEFEBE1B68C3E0006F0664 /* Model.xcdatamodeld in Sources */,
 				97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */,
 				975DCA381D58F5290017042A /* Ticket.swift in Sources */,
 				97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */,
 				975DCA361D58F5290017042A /* Columns.swift in Sources */,
+				978B7AD41D62F85500172F1B /* ColumnViewController.swift in Sources */,
 				97B552DF1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift in Sources */,
 				975DCA371D58F5290017042A /* Ticket+CoreDataProperties.swift in Sources */,
 				977B67EF1D53A0140021D8FC /* SettingsTableViewController.swift in Sources */,
@@ -575,8 +583,8 @@
 			files = (
 				56BEFF5C1B68CE58006F0664 /* NSEntityDescription_Service.swift in Sources */,
 				56BEFF5B1B68CE58006F0664 /* CoreDataService.swift in Sources */,
+				978B7AD51D6372A300172F1B /* NamedEntity.swift in Sources */,
 				56BEFF5D1B68CE58006F0664 /* NSFetchRequest_Service.swift in Sources */,
-				56BEFF611B68CE58006F0664 /* NamedEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

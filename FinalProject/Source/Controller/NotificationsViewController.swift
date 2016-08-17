@@ -9,30 +9,18 @@
 //  Citation1: https://github.com/awseeley/Swift-Pop-Up-View-Tutorial/
 //
 
-
 import UIKit
 import CoreData
 
 class NotificationsViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-        self.showAnimate()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    /* Outlets and Actions */
     @IBAction func closeNotificationsButton(sender: AnyObject) {
         self.removeAnimate()
     }
+    //optional: instead of close button, make it so user can rid pop-up screen by touching outside of it.
     
-    //Citation1
+    
+    /* Pop-Up Animation - Provided by Citation1 */
     func showAnimate() {
         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
@@ -42,7 +30,6 @@ class NotificationsViewController: UIViewController {
         });
     }
     
-    //Citation1
     func removeAnimate() {
         UIView.animateWithDuration(0.25, animations: {
             self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
@@ -54,15 +41,19 @@ class NotificationsViewController: UIViewController {
                 }
         });
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    /* View Controller Functions */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        self.showAnimate()
     }
-    */
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
