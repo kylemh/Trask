@@ -1,5 +1,5 @@
 //
-//  TicketsPageViewController.swift
+//  ProjectSettingsTableViewController.swift
 //  FinalProject
 //
 //  Created by Kyle Holmberg on 8/4/16.
@@ -11,21 +11,22 @@
 import UIKit
 import CoreData
 
-protocol SettingsTableVCDelegate: class {
-    func settingsTableVCDidFinish(settingsVC: SettingsTableViewController)
+protocol ProjectSettingsTableVCDelegate: class {
+    func projectSettingsTableVCDidFinish(settingsVC: ProjectSettingsTableViewController)
 }
 
 //add UITableViewDataSource after table methods added
-class SettingsTableViewController: UITableViewController {
+class ProjectSettingsTableViewController: UITableViewController {
     /* Outlets and Actions */
     @IBAction private func back(sender: AnyObject) {
-        delegate?.settingsTableVCDidFinish(self)
+        delegate?.projectSettingsTableVCDidFinish(self)
     }
     
     @IBAction private func edit(sender: AnyObject) {
         //
     }
-    weak var delegate : SettingsTableVCDelegate?
+    
+    weak var delegate : ProjectSettingsTableVCDelegate?
     
     /* Table View Data */
     

@@ -11,7 +11,7 @@
 import UIKit
 import CoreData
 
-class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, SettingsTableVCDelegate {
+class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, ProjectSettingsTableVCDelegate {
     /* Outlets and Actions */
     @IBAction func menuToDirectoryButton(sender: AnyObject) {
         //
@@ -51,7 +51,7 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func settingsTableVCDidFinish(settingsVC: SettingsTableViewController) {
+    func projectSettingsTableVCDidFinish(settingsVC: ProjectSettingsTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -66,7 +66,7 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
             ticketsVC.delegateMenu = self
         } else if (segue.identifier == "SettingsSegue") {
             let navController = segue.destinationViewController as! UINavigationController
-            let settingsVC = navController.topViewController as! SettingsTableViewController
+            let settingsVC = navController.topViewController as! ProjectSettingsTableViewController
             settingsVC.delegate = self
         } else {
             //is error necessary?

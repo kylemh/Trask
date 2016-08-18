@@ -8,7 +8,7 @@
         <!--ProjectDirectoryViewController-->
         <scene sceneID="2RG-L9-cId">
             <objects>
-                <tableViewController storyboardIdentifier="ProjectDirectoryID" id="LLg-nm-UT0" userLabel="ProjectDirectoryViewController" customClass="ProjectDirectoryTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProjectDirectoryID" title="Project Directory" id="LLg-nm-UT0" userLabel="ProjectDirectoryViewController" customClass="ProjectDirectoryTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="U2o-ju-fBp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,6 +79,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="l3h-MV-omT">
                             <connections>
                                 <action selector="add:" destination="LLg-nm-UT0" id="zap-Lu-y7O"/>
+                                <segue destination="RZs-Y5-X6a" kind="show" id="USO-Il-nhA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -104,7 +105,7 @@
                                 <state key="normal" title="Tickets"/>
                                 <connections>
                                     <action selector="menuToTicketsButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="dZu-Dg-luh"/>
-                                    <segue destination="Pmn-NV-jyW" kind="presentation" identifier="TicketsSegue" id="605-Pl-tpn"/>
+                                    <segue destination="Pmn-NV-jyW" kind="show" identifier="TicketsSegue" id="605-Pl-tpn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5td-uP-vVU">
@@ -250,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9c-17-o3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="929"/>
+            <point key="canvasLocation" x="-261" y="929"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AgS-6D-Ypw">
@@ -305,6 +306,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="faR-Bc-bq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1363" y="136"/>
+        </scene>
+        <!--Add New Project-->
+        <scene sceneID="whe-dy-LnJ">
+            <objects>
+                <tableViewController id="RZs-Y5-X6a" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="38k-eE-mAL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PDy-d8-8gr">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PDy-d8-8gr" id="QdG-vo-MkL">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RZs-Y5-X6a" id="Xv6-T3-kvU"/>
+                            <outlet property="delegate" destination="RZs-Y5-X6a" id="llC-4i-rDf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add New Project" id="IhE-OM-UuQ">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="AJ0-db-Qec"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cwA-ja-qUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2175" y="-653"/>
         </scene>
         <!--Title-->
         <scene sceneID="3zE-h0-jyY">
@@ -387,7 +419,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SID-Zh-IWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3883" y="-653"/>
+            <point key="canvasLocation" x="3723" y="174"/>
         </scene>
         <!--Column View Controller-->
         <scene sceneID="rtx-aV-tiT">
@@ -429,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOA-rh-X7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3883" y="142"/>
+            <point key="canvasLocation" x="4427" y="174"/>
         </scene>
         <!--Column View Controller-->
         <scene sceneID="noK-nb-X8D">
@@ -459,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M0i-Pk-Kpd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3883" y="929"/>
+            <point key="canvasLocation" x="5131" y="174"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="doh-Ml-eak">
@@ -522,7 +554,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wrS-cC-Isz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2175" y="929"/>
+            <point key="canvasLocation" x="1363" y="929"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G3w-fe-QzM">
@@ -540,7 +572,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dye-pO-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1363" y="929"/>
+            <point key="canvasLocation" x="551" y="929"/>
         </scene>
     </scenes>
 </document>

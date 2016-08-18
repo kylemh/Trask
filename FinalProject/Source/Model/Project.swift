@@ -10,5 +10,5 @@ import CoreData
 
 
 class Project: NSManagedObject {
-    //makingt his and child classes a namedentity?
+    
 }

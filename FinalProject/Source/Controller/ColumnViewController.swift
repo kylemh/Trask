@@ -1,5 +1,5 @@
 //
-//  TicketsPageViewController.swift
+//  ColumnViewController.swift
 //  FinalProject
 //
 //  Created by Kyle Holmberg on 8/1/16.

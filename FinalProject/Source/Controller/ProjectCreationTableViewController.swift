@@ -1,36 +1,32 @@
 //
-//  ProjectDirectoryTableViewController.swift
+//  ProjectCreationTableViewController.swift
 //  FinalProject
 //
-//  Created by Kyle Holmberg on 8/1/16.
+//  Created by Kyle Holmberg on 8/17/16.
 //
-//  Citations for using other authors' materials
-//  __________________________________________________________________
 //
 
 import UIKit
-import CoreData
 
-protocol DirectoryTableVCDelegate: class {
-    func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController)
-}
+class ProjectCreationTableViewController: UITableViewController {
 
-class ProjectDirectoryTableViewController: UITableViewController {
-    /* Outlets and Actions */
-    @IBOutlet var projectDirectoryTableView: UITableView!
-    
-    @IBAction private func back(sender: AnyObject) {
-        delegate?.projectDirectoryTableVCDidFinish(self)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
-    @IBAction private func add(sender: AnyObject) {
-        //
-    }
-    
-    weak var delegate : DirectoryTableVCDelegate?
 
-    
-    /* Table Population */
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -86,15 +82,14 @@ class ProjectDirectoryTableViewController: UITableViewController {
     }
     */
 
-    /* View Controller Functions */
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "Project Directory"
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
-        
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    */
 
 }
