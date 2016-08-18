@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import CoreDataService
 
 extension Project {
 
@@ -15,8 +16,9 @@ extension Project {
     @NSManaged var projectColumnCount: NSNumber
     @NSManaged var projectName: String
     @NSManaged var projectNotifications: NSNumber
-    @NSManaged var projectNumber: NSNumber
+    @NSManaged var projectCreationDate: NSDate
     @NSManaged var projectTicketCount: NSNumber
+    
     @NSManaged var childColumn: NSSet
 
 }

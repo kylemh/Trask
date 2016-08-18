@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import CoreDataService
 
 extension Ticket {
 
@@ -18,6 +19,7 @@ extension Ticket {
     @NSManaged var ticketMilestone: NSDate?
     @NSManaged var ticketNumber: NSNumber
     @NSManaged var ticketTitle: String
-    @NSManaged var parentColumn: Columns
+    
+    @NSManaged var parentColumn: Column
 
 }

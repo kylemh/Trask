@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 4.3">
     <entity name="Columns" representedClassName=".Columns" parentEntity="Project" syncable="YES">
+        <attribute name="columnIndex" attributeType="Integer 32" minValueString="3" maxValueString="6" syncable="YES"/>
         <attribute name="columnName" attributeType="String" syncable="YES"/>
         <attribute name="columnTicketCount" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <relationship name="childTicket" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="parentColumn" inverseEntity="Ticket" syncable="YES"/>
@@ -10,9 +11,9 @@
         <attribute name="projectColorMain" attributeType="Transformable" syncable="YES"/>
         <attribute name="projectColorSecondary" attributeType="Transformable" syncable="YES"/>
         <attribute name="projectColumnCount" attributeType="Integer 32" minValueString="3" maxValueString="6" defaultValueString="3" syncable="YES"/>
+        <attribute name="projectCreationDate" attributeType="Date" minDateTimeInterval="0" maxDateTimeInterval="0" syncable="YES"/>
         <attribute name="projectName" attributeType="String" syncable="YES"/>
         <attribute name="projectNotifications" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
-        <attribute name="projectNumber" attributeType="Integer 32" minValueString="1" maxValueString="10" defaultValueString="1" syncable="YES"/>
         <attribute name="projectTicketCount" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <relationship name="childColumn" toMany="YES" minCount="3" maxCount="6" deletionRule="Nullify" destinationEntity="Columns" inverseName="parentProject" inverseEntity="Columns" syncable="YES"/>
     </entity>
@@ -28,8 +29,8 @@
         <relationship name="parentColumn" maxCount="1" deletionRule="Nullify" destinationEntity="Columns" inverseName="childTicket" inverseEntity="Columns" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Columns" positionX="-272" positionY="-63" width="128" height="103"/>
-        <element name="Project" positionX="-567" positionY="-144" width="128" height="165"/>
+        <element name="Columns" positionX="-272" positionY="-63" width="128" height="118"/>
+        <element name="Project" positionX="-567" positionY="-144" width="128" height="163"/>
         <element name="Ticket" positionX="7" positionY="-63" width="128" height="180"/>
     </elements>
 </model>

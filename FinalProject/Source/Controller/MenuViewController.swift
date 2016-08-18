@@ -55,15 +55,21 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    /* View Controller Functions */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "DirectorySegue") {
             let navController = segue.destinationViewController as! UINavigationController
             let directoryVC = navController.topViewController as! ProjectDirectoryTableViewController
             directoryVC.delegate = self
         } else if (segue.identifier == "TicketsSegue") {
-            let navController = segue.destinationViewController as! UINavigationController
-            let ticketsVC = navController.topViewController as! TicketsPageViewContainerController
-            ticketsVC.delegateMenu = self
+            let backItem = UIBarButtonItem()
+            backItem.title = "Menu"
+            navigationItem.backBarButtonItem = backItem
         } else if (segue.identifier == "SettingsSegue") {
             let navController = segue.destinationViewController as! UINavigationController
             let settingsVC = navController.topViewController as! ProjectSettingsTableViewController
@@ -71,13 +77,6 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         } else {
             //is error necessary?
         }
-    }
-    
-    
-    /* View Controller Functions */
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {

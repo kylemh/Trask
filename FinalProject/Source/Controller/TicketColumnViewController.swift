@@ -11,7 +11,7 @@
 import UIKit
 import CoreData
 
-class ColumnViewController: UIViewController {
+class TicketColumnViewController: UIViewController {
     /* Outlets and Actions */
     
     

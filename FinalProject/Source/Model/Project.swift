@@ -7,8 +7,12 @@
 
 import Foundation
 import CoreData
+import CoreDataService
 
-
-class Project: NSManagedObject {
+class Project: NSManagedObject, NamedEntity {
+    
+    static var entityName: String {
+        return "Project"
+    }
     
 }
