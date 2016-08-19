@@ -14,11 +14,11 @@ import CoreData
 
 extension Column {
 
-    @NSManaged var columnName: String?
-    @NSManaged var columnTicketCount: NSNumber?
-    @NSManaged var columnIndex: NSNumber?
+    @NSManaged var columnName: String
+    @NSManaged var columnTicketCount: NSNumber
+    @NSManaged var columnIndex: NSNumber
     @NSManaged var childTicket: NSOrderedSet?
     
-    @NSManaged var parentProject: Project?
+    @NSManaged var parentProject: Project
 
 }

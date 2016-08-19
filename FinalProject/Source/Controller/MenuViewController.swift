@@ -92,7 +92,6 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         //App is loaded and ready. Commence heavy activity
-        
     }
     
     override func viewWillDisappear(animated: Bool) {

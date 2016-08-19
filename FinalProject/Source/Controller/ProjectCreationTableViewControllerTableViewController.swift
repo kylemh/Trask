@@ -12,6 +12,8 @@ class ProjectCreationTableViewControllerTableViewController: UITableViewControll
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Add Project"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -15,7 +15,8 @@ class TraskService {
     func fetchedResultsControllerForProjectList() throws -> NSFetchedResultsController {
         let fetchRequest = NSFetchRequest(namedEntity: Project.self)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "projectCreationDate", ascending: true)]
-        fetchRequest.fetchBatchSize = 10 //not the maximum - optimization of fetch request given many items
+        //fetchRequest.fetchBatchSize = # means that the fetch faults # requests at a time
+        //fetchRequest.fetchLimit = # means that the fetchRequest stops requesting after # fetchesk
         
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let resultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -120,7 +121,7 @@ class TraskService {
         ticket.ticketLabel = label
         ticket.ticketMilestone = milestone
         ticket.ticketCreationDate = NSDate()
-        let lastNum = project.projectTicketCount as! Int //will this work to get the ticket number?
+        let lastNum = project.projectTicketCount as Int //will this work to get the ticket number?
         ticket.ticketNumber = lastNum + 1
         
         //how do I set relationship to parentColumn?
