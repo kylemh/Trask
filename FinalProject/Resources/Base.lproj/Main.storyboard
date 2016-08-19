@@ -79,7 +79,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="l3h-MV-omT">
                             <connections>
                                 <action selector="add:" destination="LLg-nm-UT0" id="zap-Lu-y7O"/>
-                                <segue destination="RZs-Y5-X6a" kind="show" id="USO-Il-nhA"/>
+                                <segue destination="RZs-Y5-X6a" kind="show" identifier="createProjectSegue" id="USO-Il-nhA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -289,10 +289,10 @@
             </objects>
             <point key="canvasLocation" x="551" y="-653"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Project Creation Table View Controller Table View Controller-->
         <scene sceneID="whe-dy-LnJ">
             <objects>
-                <tableViewController id="RZs-Y5-X6a" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProjectCreationID" id="RZs-Y5-X6a" customClass="ProjectCreationTableViewControllerTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="38k-eE-mAL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,22 +302,6 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PDy-d8-8gr" id="QdG-vo-MkL">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vMZ-5d-tja">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vMZ-5d-tja" id="WW1-10-oir">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8Df-uw-Zqv">
-                                <rect key="frame" x="0.0" y="180" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Df-uw-Zqv" id="nwM-ik-Xd9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
@@ -336,7 +320,7 @@
         <!--Title-->
         <scene sceneID="3zE-h0-jyY">
             <objects>
-                <viewController id="hnl-06-YRd" customClass="TicketsPageViewContainerController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TicketsID" id="hnl-06-YRd" customClass="TicketsPageViewContainerController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7pn-8a-aWQ"/>
                         <viewControllerLayoutGuide type="bottom" id="TwD-3X-HZW"/>
@@ -365,6 +349,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BVl-GU-iGf">
                             <connections>
                                 <action selector="add:" destination="hnl-06-YRd" id="F7P-mg-Iy5"/>
+                                <segue destination="xMY-fj-esl" kind="show" id="LHD-2d-B3h"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -380,6 +365,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1p-6T-b9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2207" y="136"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Drp-iG-n1t">
+            <objects>
+                <tableViewController id="xMY-fj-esl" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lep-kO-L41">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ns3-TL-lD8">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ns3-TL-lD8" id="Nib-Pv-Siq">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xMY-fj-esl" id="UWa-5x-b8z"/>
+                            <outlet property="delegate" destination="xMY-fj-esl" id="wQG-GK-4gY"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cm9-jd-fte" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2207" y="929"/>
         </scene>
         <!--Column View Controller-->
         <scene sceneID="3oa-HX-xaZ">

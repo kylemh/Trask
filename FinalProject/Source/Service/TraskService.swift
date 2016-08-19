@@ -49,21 +49,38 @@ class TraskService {
     }
  
     //Add Project to Directory
-    func addProject(name: String, mainColor: NSObject, secondaryColor: NSObject, columnNum: NSNumber, column1Title: String, column2Title: String, column3Title: String, column4Title: String?, column5Title: String?, column6Title: String?, notificationsStatus: Bool, orderIndex: Int) throws {
+    func addProject(name: String, mainColor: NSObject, secondaryColor: NSObject, possibleColumnsArray: [Any], notificationsStatus: Bool, orderIndex: Int) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
-        
         let project = NSEntityDescription.insertNewObjectForNamedEntity(Project.self, inManagedObjectContext: context)
+        
+        //Attributes
         project.projectName = name
         project.projectColorMain = mainColor
         project.projectColorSecondary = secondaryColor
-        project.projectColumnCount = columnNum
         project.projectNotifications = notificationsStatus
         project.projectCreationDate = NSDate()
         project.projectTicketCount = 0
-        do {
-            project.childColumn
-        }
         
+        /* Handling Variable Amount of Columns */
+        // NOTE: Size of possibleColumnsArray is 6. Contains at least 3 items of type String and at most 3 items of type nil
+        var actualColumnArray: [String] = []
+        //sift througgh possibleColumnsArray to find every item of type String (those are the actual columns)
+        for column in possibleColumnsArray {
+            if let nonEmptyColumn = column as? String {
+                actualColumnArray.append(nonEmptyColumn)
+            } else {
+                // column is empty
+            }
+        }
+        project.projectColumnCount = actualColumnArray.count
+        let columnOrderedSet = NSOrderedSet(array: actualColumnArray)
+        
+        var i: Int = 0
+        for column in columnOrderedSet {
+            //Relationships
+            try addColumn(column as! String, index: i, parent: project)
+            i = i + 1
+        }
         try context.save()
         
         CoreDataService.sharedCoreDataService.saveRootContext {
@@ -72,15 +89,17 @@ class TraskService {
     }
     
     //Add Column to Project
-    func addColumn(name: String, index: Int) throws {
+    func addColumn(name: String, index: Int, parent: Project) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
-        
         let column = NSEntityDescription.insertNewObjectForNamedEntity(Column.self, inManagedObjectContext: context)
+        
+        //Attributes
         column.columnName = name
         column.columnIndex = index
         column.columnTicketCount = 0  //Ticket Count is 0 for new column
         
-        //how do I set relationship to parentProject
+        //Relationships
+        column.parentProject = parent
         
         try context.save()
         
@@ -90,10 +109,10 @@ class TraskService {
     }
     
     //Add Ticket to Column
-    func addTicket(name: String, assignee: String?, comments: String?, detail: String?, label: String?, milestone: NSDate?) throws {
+    func addTicket(name: String, assignee: String?, comments: String?, detail: String?, label: String?, milestone: NSDate?, project: Project, column: Column) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
-        
         let ticket = NSEntityDescription.insertNewObjectForNamedEntity(Ticket.self, inManagedObjectContext: context)
+        
         ticket.ticketTitle = name
         ticket.ticketAssignee = assignee
         ticket.ticketComments = comments
@@ -101,14 +120,27 @@ class TraskService {
         ticket.ticketLabel = label
         ticket.ticketMilestone = milestone
         ticket.ticketCreationDate = NSDate()
-        ticket.ticketNumber = 1 //how to get number of tickets from project?
+        let lastNum = project.projectTicketCount as! Int //will this work to get the ticket number?
+        ticket.ticketNumber = lastNum + 1
         
-        //how do I set relationship to parentColumn
+        //how do I set relationship to parentColumn?
+        ticket.parentColumn = column
         
         try context.save()
         
         CoreDataService.sharedCoreDataService.saveRootContext {
             print("'addTicket' save finished")
+        }
+    }
+    
+    func moveTicket(ticket: Ticket, column: Column) {
+        //let context = CoreDataService.sharedCoreDataService.mainQueueContext
+        ticket.setValue(column, forKey: "parentColumn")
+        
+        //try context.save() //errors here?
+        
+        CoreDataService.sharedCoreDataService.saveRootContext {
+            print("'moveTicket' save finished")
         }
     }
  
