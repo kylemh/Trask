@@ -10,13 +10,14 @@
 
 import UIKit
 import CoreData
+import CoreDataService
 
 protocol DirectoryTableVCDelegate: class {
     func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController)
 }
 
 class ProjectDirectoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-    /* Outlets and Actions */
+    // Mark: Outlets and Actions
     @IBOutlet var projectDirectoryTableView: UITableView!
     weak var delegate : DirectoryTableVCDelegate?
     
@@ -29,9 +30,18 @@ class ProjectDirectoryTableViewController: UITableViewController, NSFetchedResul
     }
 
     
-    /* Table Population */
+    // Mark: Table Population
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        let result: Int
+        
+        if let someSections = fetchedResultsController?.sections {
+            result = someSections.count
+        }
+        else {
+            result = 0
+        }
+        
+        return result
     }
     
     // Override to support conditional rearranging of the table view.
@@ -61,7 +71,7 @@ class ProjectDirectoryTableViewController: UITableViewController, NSFetchedResul
         //
     }
 
-    /* View Controller Functions */
+    // Mark: View Controller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Project Directory"

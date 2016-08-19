@@ -17,8 +17,8 @@ extension Column {
     @NSManaged var columnName: String
     @NSManaged var columnTicketCount: NSNumber
     @NSManaged var columnIndex: NSNumber
-    @NSManaged var childTicket: NSOrderedSet?
     
+    @NSManaged var childTicket: NSSet?
     @NSManaged var parentProject: Project
 
 }

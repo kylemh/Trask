@@ -32,7 +32,6 @@
 		978B7B2C1D66DBD800172F1B /* NSEntityDescription_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */; };
 		978B7B2D1D66DBDA00172F1B /* NamedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF581B68CE58006F0664 /* NamedEntity.swift */; };
 		978B7B2E1D66DC1A00172F1B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFEBC1B68C3E0006F0664 /* Model.xcdatamodeld */; };
-		978B7B2F1D66DC1F00172F1B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56BEFF4D1B68CE58006F0664 /* Info.plist */; };
 		978B7B311D66DC2A00172F1B /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF501B68CE58006F0664 /* CoreDataService.swift */; };
 		978B7B381D66DDAB00172F1B /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B321D66DDAB00172F1B /* Project+CoreDataProperties.swift */; };
 		978B7B391D66DDAB00172F1B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B331D66DDAB00172F1B /* Project.swift */; };
@@ -550,7 +549,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				978B7B2F1D66DC1F00172F1B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

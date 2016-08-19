@@ -16,12 +16,11 @@ extension Project {
 
     @NSManaged var projectColorMain: NSObject
     @NSManaged var projectColorSecondary: NSObject
-    @NSManaged var projectColumnCount: NSNumber
     @NSManaged var projectName: String
     @NSManaged var projectNotifications: NSNumber
     @NSManaged var projectCreationDate: NSDate
     @NSManaged var projectTicketCount: NSNumber
     
-    @NSManaged var childColumn: NSOrderedSet
+    @NSManaged var childColumn: NSSet
 
 }

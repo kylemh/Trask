@@ -11,7 +11,7 @@ import CoreDataService
 import Foundation
 
 class TraskService {
-    //Projects Fetch
+    // MARK: Projects Fetch
     func fetchedResultsControllerForProjectList() throws -> NSFetchedResultsController {
         let fetchRequest = NSFetchRequest(namedEntity: Project.self)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "projectCreationDate", ascending: true)]
@@ -25,7 +25,7 @@ class TraskService {
         return resultsController
     }
     
-    //Columns Fetch
+    // MARK: Columns Fetch
     func fetchedResultsControllerForColumnsInProject(project: Project) throws -> NSFetchedResultsController {
         let fetchRequest = NSFetchRequest(namedEntity: Project.self)
         fetchRequest.predicate = NSPredicate(format: "parentProject == %@", project)
@@ -37,7 +37,7 @@ class TraskService {
         return resultsController
     }
     
-    //Tickets Fetch
+    // MARK: Tickets Fetch
     func fetchedResultsControllerForTicketsInColumn(column: Column) throws -> NSFetchedResultsController {
         let fetchRequest = NSFetchRequest(namedEntity: Column.self)
         fetchRequest.predicate = NSPredicate(format: "parentColumn == %@", column)
@@ -49,8 +49,8 @@ class TraskService {
         return resultsController
     }
  
-    //Add Project to Directory
-    func addProject(name: String, mainColor: NSObject, secondaryColor: NSObject, possibleColumnsArray: [Any], notificationsStatus: Bool, orderIndex: Int) throws {
+    // MARK: Add Project to Directory
+    func addProject(name: String, mainColor: NSObject, secondaryColor: NSObject, possibleColumnsArray: [String], notificationsStatus: Bool, orderIndex: Int) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let project = NSEntityDescription.insertNewObjectForNamedEntity(Project.self, inManagedObjectContext: context)
         
@@ -60,25 +60,13 @@ class TraskService {
         project.projectColorSecondary = secondaryColor
         project.projectNotifications = notificationsStatus
         project.projectCreationDate = NSDate()
-        project.projectTicketCount = 0
+        project.projectTicketCount = 0 //Ticket Count is 0 for new Project
         
         /* Handling Variable Amount of Columns */
-        // NOTE: Size of possibleColumnsArray is 6. Contains at least 3 items of type String and at most 3 items of type nil
-        var actualColumnArray: [String] = []
-        //sift througgh possibleColumnsArray to find every item of type String (those are the actual columns)
-        for column in possibleColumnsArray {
-            if let nonEmptyColumn = column as? String {
-                actualColumnArray.append(nonEmptyColumn)
-            } else {
-                // column is empty
-            }
-        }
-        project.projectColumnCount = actualColumnArray.count
-        let columnOrderedSet = NSOrderedSet(array: actualColumnArray)
+        let columnSet = NSSet(array: possibleColumnsArray)
         
         var i: Int = 0
-        for column in columnOrderedSet {
-            //Relationships
+        for column in columnSet {
             try addColumn(column as! String, index: i, parent: project)
             i = i + 1
         }
@@ -89,7 +77,7 @@ class TraskService {
         }
     }
     
-    //Add Column to Project
+    // MARK: Add Column to Project
     func addColumn(name: String, index: Int, parent: Project) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let column = NSEntityDescription.insertNewObjectForNamedEntity(Column.self, inManagedObjectContext: context)
@@ -97,9 +85,9 @@ class TraskService {
         //Attributes
         column.columnName = name
         column.columnIndex = index
-        column.columnTicketCount = 0  //Ticket Count is 0 for new column
+        column.columnTicketCount = 0  //Ticket Count is 0 for new Column
         
-        //Relationships
+        //Relationship
         column.parentProject = parent
         
         try context.save()
@@ -109,11 +97,12 @@ class TraskService {
         }
     }
     
-    //Add Ticket to Column
-    func addTicket(name: String, assignee: String?, comments: String?, detail: String?, label: String?, milestone: NSDate?, project: Project, column: Column) throws {
+    // MARK: Add Ticket to Column
+    func addTicket(name: String, assignee: String?, comments: String?, detail: String?, label: String?, milestone: NSDate?, column: Column) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let ticket = NSEntityDescription.insertNewObjectForNamedEntity(Ticket.self, inManagedObjectContext: context)
         
+        //Attributes
         ticket.ticketTitle = name
         ticket.ticketAssignee = assignee
         ticket.ticketComments = comments
@@ -121,10 +110,11 @@ class TraskService {
         ticket.ticketLabel = label
         ticket.ticketMilestone = milestone
         ticket.ticketCreationDate = NSDate()
-        let lastNum = project.projectTicketCount as Int //will this work to get the ticket number?
-        ticket.ticketNumber = lastNum + 1
+        let newTicketCount = (column.parentProject.projectTicketCount as Int) + 1
+        column.parentProject.projectTicketCount = newTicketCount
+        ticket.ticketNumber = newTicketCount
         
-        //how do I set relationship to parentColumn?
+        //Relationship
         ticket.parentColumn = column
         
         try context.save()
@@ -134,26 +124,28 @@ class TraskService {
         }
     }
     
-    func moveTicket(ticket: Ticket, column: Column) {
-        //let context = CoreDataService.sharedCoreDataService.mainQueueContext
-        ticket.setValue(column, forKey: "parentColumn")
+    func moveTicket(ticket: Ticket, column: Column) throws {
+        let context = CoreDataService.sharedCoreDataService.mainQueueContext
         
-        //try context.save() //errors here?
+        ticket.parentColumn = column
+        
+        try context.save()
         
         CoreDataService.sharedCoreDataService.saveRootContext {
             print("'moveTicket' save finished")
         }
     }
  
-    //Edit Project Attributes
+    // MARK: Edit Project Attributes
     func editProject(project: Project, newName: String, newMainColor: NSObject, newSecondaryColor: NSObject, newColumnNum: NSNumber, newNotificationStatus: Bool) throws {
+        let context = CoreDataService.sharedCoreDataService.mainQueueContext
+        
+        //Attribute Changes
         project.projectName = newName
         project.projectColorMain = newMainColor
         project.projectColorSecondary = newSecondaryColor
-        project.projectColumnCount = newColumnNum
         project.projectNotifications = newNotificationStatus
         
-        let context = CoreDataService.sharedCoreDataService.mainQueueContext
         try context.save()
         
         CoreDataService.sharedCoreDataService.saveRootContext {
@@ -161,8 +153,11 @@ class TraskService {
         }
     }
     
-    //Edit Ticket Attributes
+    // MARK: Edit Ticket Attributes
     func editTicket(ticket: Ticket, newName: String, newAssignee: String?, newComment: String?, newDetail: String?, newLabel: String?, newMilestone: NSDate?) throws {
+        let context = CoreDataService.sharedCoreDataService.mainQueueContext
+        
+        //Attribute Changes
         ticket.ticketTitle = newName
         ticket.ticketAssignee = newAssignee
         ticket.ticketComments = newComment
@@ -170,7 +165,6 @@ class TraskService {
         ticket.ticketLabel = newLabel
         ticket.ticketMilestone = newMilestone
         
-        let context = CoreDataService.sharedCoreDataService.mainQueueContext
         try context.save()
         
         CoreDataService.sharedCoreDataService.saveRootContext {
@@ -178,7 +172,56 @@ class TraskService {
         }
     }
     
-    //Create method to move Tickets to new Column if Column is deleted (and create alert for the move)
+    // MARK: Delete Column
+    func deleteColumn(markedColumn: Column, withNewParentColumn newParentColumn: Column, withSaveCompletionHandler saveCompletionHandler: SaveCompletionHandler) throws {
+        let context = CoreDataService.sharedCoreDataService.mainQueueContext
+        
+        let fetchRequest = NSFetchRequest(namedEntity: Column.self)
+        fetchRequest.predicate = NSPredicate(format: "parentColumn == %@", markedColumn)
+        let associatedTickets = (try? context.executeFetchRequest(fetchRequest)) as! [Ticket]
+        
+        //let associatedTickets: [Ticket] = try fetchedResultsControllerForTicketsInColumn(markedColumn).fetchedObjects as! [Ticket]
+        
+        for ticket in associatedTickets {
+            try moveTicket(ticket, column: newParentColumn)
+        }
+        
+        context.deleteObject(markedColumn)
+        
+        try context.save()
+        
+        
+        // TODO: deal with the saveCompletionHandler
+        // TODO: Ensure thet saveCompletionHandler should be type optional/nonoptional based upon call
+        // in order to keep screen from closing before context save
+        // saveCompletionHandler for delete column will allow for reindexColumns func call
+        
+        CoreDataService.sharedCoreDataService.saveRootContext {
+            print("'deleteColumn' save finished")
+            saveCompletionHandler()
+        }
+    }
+    
+    // MARK: Reindex Column
+    func reindexColumns(columns: Array<Column>, shiftForward: Bool, withSaveCompletionHandler saveCompletionHandler: SaveCompletionHandler? = nil) throws {
+        for column in columns {
+            let currentOrderIndex = column.columnIndex.integerValue
+            if shiftForward {
+                column.columnIndex = currentOrderIndex + 1
+            } else {
+                column.columnIndex = currentOrderIndex - 1
+            }
+        }
+        
+        let context = CoreDataService.sharedCoreDataService.mainQueueContext
+        try context.save()
+        
+        CoreDataService.sharedCoreDataService.saveRootContext {
+            print("'reindexColumns' save finished")
+            saveCompletionHandler?()
+            
+        }
+    }
     
     // MARK: Initialization
     private init() {
@@ -186,47 +229,4 @@ class TraskService {
     
     // MARK: Singleton
     static var sharedTraskService = TraskService()
-    
-    
-    /*
-     // Functionality to delete projects
-     func deleteProject(project: Project, withSaveCompletionHandler saveCompletionHandler: SaveCompletionHandler) throws {
-     let context = CoreDataService.sharedCoreDataService.mainQueueContext
-     
-     context.deleteObject(project)
-     
-     try context.save()
-     
-     CoreDataService.sharedCoreDataService.saveRootContext {
-     print("'deleteProject' save finished")
-     
-     saveCompletionHandler()
-     }
-     }
-     */
-    
-    /*
-     // Functionality to reorder projects
-     func reindexProjects(projects: Array<Project>, shiftForward: Bool, withSaveCompletionHandler saveCompletionHandler: SaveCompletionHandler? = nil) throws {
-     
-     for project in projects {
-     let currentOrderIndex = project.projectNumber.integerValue
-     if shiftForward {
-     project.projectNumber = currentOrderIndex + 1
-     }
-     else {
-     project.projectNumber = currentOrderIndex - 1
-     }
-     }
-     
-     let context = CoreDataService.sharedCoreDataService.mainQueueContext
-     try context.save()
-     
-     CoreDataService.sharedCoreDataService.saveRootContext {
-     print("'reindexProjects' save finished")
-     
-     saveCompletionHandler?()
-     }
-     }
-     */
 }
