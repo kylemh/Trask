@@ -39,7 +39,7 @@
 		978B7B3B1D66DDAB00172F1B /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B351D66DDAB00172F1B /* Ticket.swift */; };
 		978B7B3C1D66DDAB00172F1B /* Columns+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B361D66DDAB00172F1B /* Columns+CoreDataProperties.swift */; };
 		978B7B3D1D66DDAB00172F1B /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B371D66DDAB00172F1B /* Column.swift */; };
-		978B7B431D6702DA00172F1B /* ProjectCreationTableViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B421D6702DA00172F1B /* ProjectCreationTableViewControllerTableViewController.swift */; };
+		978B7B431D6702DA00172F1B /* ProjectCreationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B421D6702DA00172F1B /* ProjectCreationTableViewController.swift */; };
 		97B552D51D4F4DDC00621F98 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */; };
 		97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D61D4F4E1100621F98 /* MenuViewController.swift */; };
 		97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */; };
@@ -133,7 +133,7 @@
 		978B7B351D66DDAB00172F1B /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		978B7B361D66DDAB00172F1B /* Columns+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Columns+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		978B7B371D66DDAB00172F1B /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
-		978B7B421D6702DA00172F1B /* ProjectCreationTableViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCreationTableViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		978B7B421D6702DA00172F1B /* ProjectCreationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCreationTableViewController.swift; sourceTree = "<group>"; };
 		97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		97B552D61D4F4E1100621F98 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsPageViewController.swift; sourceTree = "<group>"; };
@@ -260,8 +260,8 @@
 				562BB1371B55627000B73F46 /* AppDelegate.swift */,
 				97B552D61D4F4E1100621F98 /* MenuViewController.swift */,
 				97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */,
+				978B7B421D6702DA00172F1B /* ProjectCreationTableViewController.swift */,
 				978B7ADB1D64511100172F1B /* ProjectDirectoryTableViewCell.swift */,
-				978B7B421D6702DA00172F1B /* ProjectCreationTableViewControllerTableViewController.swift */,
 				97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */,
 				978B7AD31D62F85500172F1B /* TicketColumnViewController.swift */,
 				97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */,
@@ -583,7 +583,7 @@
 				978B7AD41D62F85500172F1B /* TicketColumnViewController.swift in Sources */,
 				97B552DF1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift in Sources */,
 				978B7AE81D661DFD00172F1B /* NSFetchRequest_Service.swift in Sources */,
-				978B7B431D6702DA00172F1B /* ProjectCreationTableViewControllerTableViewController.swift in Sources */,
+				978B7B431D6702DA00172F1B /* ProjectCreationTableViewController.swift in Sources */,
 				978B7B391D66DDAB00172F1B /* Project.swift in Sources */,
 				977B67EF1D53A0140021D8FC /* ProjectSettingsTableViewController.swift in Sources */,
 				978B7B311D66DC2A00172F1B /* CoreDataService.swift in Sources */,

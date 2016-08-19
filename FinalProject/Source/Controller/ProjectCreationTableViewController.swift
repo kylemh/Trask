@@ -1,5 +1,5 @@
 //
-//  ProjectCreationTableViewControllerTableViewController.swift
+//  ProjectCreationTableViewController.swift
 //  FinalProject
 //
 //  Created by Kyle Holmberg on 8/19/16.
@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import CoreData
+import CoreDataService
 
-class ProjectCreationTableViewControllerTableViewController: UITableViewController {
+protocol CreateProjectTableVCDelegate: class {
+    func projectCreationVCDidFinish(projectCreationVC: ProjectCreationTableViewController)
+}
 
+class ProjectCreationTableViewController: UITableViewController {
+    weak var delegate : CreateProjectTableVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

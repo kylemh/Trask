@@ -16,9 +16,8 @@ protocol DirectoryTableVCDelegate: class {
     func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController)
 }
 
-class ProjectDirectoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-    // Mark: Outlets and Actions
-    @IBOutlet var projectDirectoryTableView: UITableView!
+class ProjectDirectoryTableViewController: UITableViewController, CreateProjectTableVCDelegate, NSFetchedResultsControllerDelegate {
+    // Mark: IBActions
     weak var delegate : DirectoryTableVCDelegate?
     
     @IBAction private func back(sender: AnyObject) {
@@ -28,7 +27,19 @@ class ProjectDirectoryTableViewController: UITableViewController, NSFetchedResul
     @IBAction private func add(sender: AnyObject) {
         //
     }
-
+    
+    // MARK: Private
+    private func setupResultsController() {
+        if let resultsController = try? TraskService.sharedTraskService.fetchedResultsControllerForProjectList() {
+            resultsController.delegate = self
+            fetchedResultsController = resultsController
+        }
+        else {
+            fetchedResultsController = nil
+        }
+        
+        projectDirectoryTableView.reloadData()
+    }
     
     // Mark: Table Population
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -71,10 +82,25 @@ class ProjectDirectoryTableViewController: UITableViewController, NSFetchedResul
         //
     }
 
-    // Mark: View Controller Functions
+    // Mark: Delegate Function
+    func projectCreationVCDidFinish(projectCreationVC: ProjectCreationTableViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: View Controller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Project Directory"
+        
+        setupResultsController()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectedIndexPath = projectDirectoryTableView.indexPathForSelectedRow {
+            projectDirectoryTableView.deselectRowAtIndexPath(selectedIndexPath, animated: false)
+        }
     }
         
     override func didReceiveMemoryWarning() {
@@ -86,5 +112,27 @@ class ProjectDirectoryTableViewController: UITableViewController, NSFetchedResul
         let backItem = UIBarButtonItem()
         backItem.title = "Cancel"
         navigationItem.backBarButtonItem = backItem
+        
+        if (segue.identifier == "createProjectSegue") {
+            let projectCreationVC = segue.destinationViewController as! ProjectCreationTableViewController
+            projectCreationVC.delegate = self
+        // TODO: Create segue behavior for selecting a project cell in the project directory TableVC
+        /*
+        } else if (A PROJECT CELL IS SELECTED) {
+             maintain a variable containing current project to persist data to settings, notifications, and tickets
+             set destinationVC to Menu
+        */
+        } else {
+            super.prepareForSegue(segue, sender: sender)
+        }
     }
+    
+    // MARK: Properties (Private)
+    private var horizontalSwipeToEditMode = false
+    private var ignoreUpdates = false
+    private var fetchedResultsController: NSFetchedResultsController?
+    
+    // MARK: IBOutlets
+    @IBOutlet weak private var projectDirectoryTableView: UITableView!
+    
 }

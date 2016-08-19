@@ -61,6 +61,34 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         // Do any additional setup after loading the view.
     }
     
+    /*
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "LentItemListSegue" {
+            if let indexPath = categoryListTable.indexPathForSelectedRow, let selectedCategory = fetchedResultsController?.objectAtIndexPath(indexPath) as? Category {
+                let lentItemListViewController = segue.destinationViewController as! LentItemListViewController
+                lentItemListViewController.selectedCategory = selectedCategory
+                
+                categoryListTable.deselectRowAtIndexPath(indexPath, animated: true)
+            }
+        }
+        else if segue.identifier == "AddCategorySegue" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let categoryDetailViewController = navigationController.topViewController as! CategoryDetailViewController
+            categoryDetailViewController.delegate = self
+        }
+        else if segue.identifier == "CategoryDetailSegue" {
+            if let indexPath = categoryListTable.indexPathForSelectedRow, let selectedCategory = fetchedResultsController?.objectAtIndexPath(indexPath) as? Category {
+                let categoryDetailViewController = segue.destinationViewController as! CategoryDetailViewController
+                categoryDetailViewController.selectedCategory = selectedCategory
+                categoryDetailViewController.delegate = self
+            }
+        }
+        else {
+            super.prepareForSegue(segue, sender: sender)
+        }
+    }
+    */
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "DirectorySegue") {
             let navController = segue.destinationViewController as! UINavigationController
@@ -75,7 +103,7 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
             let settingsVC = navController.topViewController as! ProjectSettingsTableViewController
             settingsVC.delegate = self
         } else {
-            //is error necessary?
+            super.prepareForSegue(segue, sender: sender)
         }
     }
     
