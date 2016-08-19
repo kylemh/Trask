@@ -114,6 +114,7 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         navigationItem.backBarButtonItem = backItem
         
         if (segue.identifier == "createProjectSegue") {
+            // MARK: ATTENTION CHARLES
             let projectCreationVC = segue.destinationViewController as! ProjectCreationTableViewController
             projectCreationVC.delegate = self
         // TODO: Create segue behavior for selecting a project cell in the project directory TableVC
