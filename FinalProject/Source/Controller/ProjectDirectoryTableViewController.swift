@@ -61,7 +61,7 @@ class ProjectDirectoryTableViewController: UITableViewController, NSFetchedResul
         static let AllRows: Array<DetailRows> = [.ProjectName, .MainColorSelector, .SecondaryColorSelector]
     }
     
-    var ColumnRows = TraskService.fetchedResultsControllerForColumnsInProject(
+    var ColumnRows: Int = TraskService.fetchedResultsControllerForColumnsInProject(project).count
     
     enum NotificationsRow {
         case SwitchOn

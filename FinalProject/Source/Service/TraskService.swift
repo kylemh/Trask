@@ -49,7 +49,7 @@ class TraskService {
     }
  
     //Add Project to Directory
-    func addProject(name: String, mainColor: NSObject, secondaryColor: NSObject, columnNum: NSNumber, notificationsStatus: Bool, orderIndex: Int) throws {
+    func addProject(name: String, mainColor: NSObject, secondaryColor: NSObject, columnNum: NSNumber, column1Title: String, column2Title: String, column3Title: String, column4Title: String?, column5Title: String?, column6Title: String?, notificationsStatus: Bool, orderIndex: Int) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         
         let project = NSEntityDescription.insertNewObjectForNamedEntity(Project.self, inManagedObjectContext: context)
@@ -60,6 +60,9 @@ class TraskService {
         project.projectNotifications = notificationsStatus
         project.projectCreationDate = NSDate()
         project.projectTicketCount = 0
+        do {
+            project.childColumn
+        }
         
         try context.save()
         
@@ -67,7 +70,7 @@ class TraskService {
             print("'addProject' save finished")
         }
     }
- 
+    
     //Add Column to Project
     func addColumn(name: String, index: Int) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext

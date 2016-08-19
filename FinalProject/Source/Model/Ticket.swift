@@ -14,5 +14,14 @@ class Ticket: Column {
     //    return "Ticket"
     //}
     
+    @NSManaged var ticketAssignee: String?
+    @NSManaged var ticketComments: String?
+    @NSManaged var ticketCreationDate: NSDate
+    @NSManaged var ticketDetail: String?
+    @NSManaged var ticketLabel: String?
+    @NSManaged var ticketMilestone: NSDate?
+    @NSManaged var ticketNumber: NSNumber
+    @NSManaged var ticketTitle: String
     
+    @NSManaged var parentColumn: Column
 }
