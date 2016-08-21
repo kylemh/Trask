@@ -28,6 +28,10 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
     }
     
     // MARK: Table View Functions
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return Sections.AllSections.count
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Sections.AllSections[section] {
         case .DetailRows:
@@ -38,102 +42,85 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
             return NotificationRow.AllRows.count
         }
     }
-
+    
+    //temporary
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.row {
+        switch indexPath {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationTitleCell") as UITableViewCell!
-            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationMainColorCell") as UITableViewCell!
-            
             return cell
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationSecondaryColorCell") as UITableViewCell!
-            
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumn1Cell") as UITableViewCell!
-            
+            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
             return cell
         case 4:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumn2Cell") as UITableViewCell!
-            
+            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationAddColumnCell") as UITableViewCell!
             return cell
         case 5:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumn3Cell") as UITableViewCell!
-            
-            return cell
-        case 6:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationAddColumnCell") as UITableViewCell!
-            
+            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationNotificationsCell") as UITableViewCell!
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationNotificationsCell") as UITableViewCell!
-            
+            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationTitleCell") as UITableViewCell!
             return cell
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
     */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch Sections.AllSections[indexPath.section] {
+        case .DetailRows:
+            switch DetailRows.AllRows[indexPath.row] {
+            case .ProjectTitle:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationTitleCell") as UITableViewCell!
+                return cell
+            case .MainColorSelector:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationMainColorCell") as UITableViewCell!
+                return cell
+            case .SecondaryColorSelector:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationSecondaryColorCell") as UITableViewCell!
+                return cell
+            }
+        case .ColumnRows:
+            switch ColumnRows.AllRows[indexPath.row] {
+            case .Column1:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
+                return cell
+            case .Column2:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
+                return cell
+            case .Column3:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
+                return cell
+            case .Column4:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
+                return cell
+            case .Column5:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
+                return cell
+            case .Column6:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
+                return cell
+            case .AddColumn:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationAddColumnCell") as UITableViewCell!
+                return cell
+            }
+        case .NotificationRow:
+            switch NotificationRow.AllRows[indexPath.row] {
+            case .SwitchOn:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationNotificationsCell") as UITableViewCell!
+                return cell
+            case .SwitchOff:
+                let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationNotificationsCell") as UITableViewCell!
+                return cell
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    weak var delegate : CreateProjectTableVCDelegate?
-    
-    // MARK: Properties (Private)
-    private var fetchedResultsController: NSFetchedResultsController?
-    private var horizontalSwipeToEditMode = false
-    private var ignoreUpdates = false
-    
-    // MARK : Properties (IBOutlet)
-    @IBOutlet weak private var projectCreationTableView: UITableView!
-    
-    // MARK: Properties (Private Static Constant)
-    private static let DefaultName = "Unnamed Project"
-    private static let DefaultColumnName = "Unnamed Column"
     
     // MARK: Section/Row Enums
     enum Sections {
@@ -148,13 +135,8 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         case ProjectTitle
         case MainColorSelector
         case SecondaryColorSelector
-        case Column1
-        case Column2
-        case Column3
-        case AddColumn
-        case Notifications
         
-        static let AllRows: Array<DetailRows> = [.ProjectTitle, .MainColorSelector, .SecondaryColorSelector, .Notifications]
+        static let AllRows: Array<DetailRows> = [.ProjectTitle, .MainColorSelector, .SecondaryColorSelector]
     }
     
     enum ColumnRows {
@@ -175,42 +157,19 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         
         static let AllRows: Array<NotificationRow> = [.SwitchOn, .SwitchOff]
     }
-    
-    var ColumnRows: Int = TraskService.fetchedResultsControllerForColumnsInProject(project).count
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch Section.AllSections[indexPath.section] {
-        case .Details:
-            switch DetailRows.AllRows[indexPath.row] {
-            case .ProjectName:
-                break
-            case .MainColorSelector:
-                break
-            case .SecondaryColorSelector:
-                break
-            }
-        case .Columns:
-            switch ColumnRows.AllRows[indexPath.row] {
-            case .Column1:
-                break
-            case .Column2:
-                break
-            case .Column3:
-                break
-            case .Column4:
-                break
-            case .Column5:
-                break
-            case .Column6:
-                break
-            }
-        case .Notifications:
-            switch NotificationsRow.AllRows[indexPath.row] {
-            case .SwitchOn:
-                break
-            case .SwitchOff:
-                break
-            }
-        }
-    }
+    weak var delegate : CreateProjectTableVCDelegate?
+    //var ColumnRows: Int = TraskService.fetchedResultsControllerForColumnsInProject(project).count
+    
+    // MARK: Properties (Private)
+    private var fetchedResultsController: NSFetchedResultsController?
+    private var horizontalSwipeToEditMode = false
+    private var ignoreUpdates = false
+    
+    // MARK : Properties (IBOutlet)
+    @IBOutlet weak private var projectCreationTableView: UITableView!
+    
+    // MARK: Properties (Private Static Constant)
+    private static let DefaultName = "Unnamed Project"
+    private static let DefaultColumnName = "Unnamed Column"
 }

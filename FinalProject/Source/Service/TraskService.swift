@@ -98,7 +98,7 @@ class TraskService {
     }
     
     // MARK: Add Ticket to Column
-    func addTicket(name: String, assignee: String?, comments: String?, detail: String?, label: String?, milestone: NSDate?, column: Column) throws {
+    func addTicket(name: String, assignee: String?, comments: String?, detail: String?, label: String?, milestone: NSDate, column: Column) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let ticket = NSEntityDescription.insertNewObjectForNamedEntity(Ticket.self, inManagedObjectContext: context)
         
@@ -154,7 +154,7 @@ class TraskService {
     }
     
     // MARK: Edit Ticket Attributes
-    func editTicket(ticket: Ticket, newName: String, newAssignee: String?, newComment: String?, newDetail: String?, newLabel: String?, newMilestone: NSDate?) throws {
+    func editTicket(ticket: Ticket, newName: String, newAssignee: String?, newComment: String?, newDetail: String?, newLabel: String?, newMilestone: NSDate) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         
         //Attribute Changes

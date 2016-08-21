@@ -128,7 +128,6 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
     }
     
     // MARK: Properties (Private)
-    private var horizontalSwipeToEditMode = false
     private var ignoreUpdates = false
     private var fetchedResultsController: NSFetchedResultsController?
     

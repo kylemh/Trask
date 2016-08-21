@@ -22,7 +22,7 @@
         <attribute name="ticketCreationDate" attributeType="Date" syncable="YES"/>
         <attribute name="ticketDetail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ticketLabel" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ticketMilestone" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="ticketMilestone" attributeType="Date" syncable="YES"/>
         <attribute name="ticketNumber" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ticketTitle" attributeType="String" syncable="YES"/>
         <relationship name="parentColumn" maxCount="1" deletionRule="Nullify" destinationEntity="Column" inverseName="childTicket" inverseEntity="Column" syncable="YES"/>
@@ -30,6 +30,6 @@
     <elements>
         <element name="Column" positionX="-272" positionY="-63" width="128" height="118"/>
         <element name="Project" positionX="-567" positionY="-144" width="128" height="148"/>
-        <element name="Ticket" positionX="7" positionY="-63" width="128" height="180"/>
+        <element name="Ticket" positionX="7" positionY="-63" width="128" height="178"/>
     </elements>
 </model>

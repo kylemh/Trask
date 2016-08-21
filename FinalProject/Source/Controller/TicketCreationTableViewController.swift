@@ -13,7 +13,7 @@ class TicketCreationTableViewController: UITableViewController, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        datePicker = UIDatePicker(frame: CGReactZero)
+        //datePicker = UIDatePicker(frame: CGReactZero)
         
     }
 
@@ -25,21 +25,13 @@ class TicketCreationTableViewController: UITableViewController, UITextFieldDeleg
     // MARK: View Mangement
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        /*
         if selectedTicket != nil {
-            navigationItem.title = "Edit Ticket #(\selectedTicket."
+            if let tickNum: Int = selectedTicket!.ticketNumber as Int {
+                navigationItem.title = "Edit Ticket " + String(tickNum)
+            }
         }
-    }
-    
-    // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        */
     }
 
     /*
@@ -99,50 +91,58 @@ class TicketCreationTableViewController: UITableViewController, UITextFieldDeleg
     
     // MARK: Initialization
     required init!(coder aDecoder: NSCoder) {
-        let now = NSDate()
-        dateBorrowed = now
+        self.ticketTitle = TicketCreationTableViewController.DefaultTitle
         let dateComponents = NSDateComponents()
         dateComponents.weekOfYear = 2
-        if let later = NSCalendar.currentCalendar().dateByAddingComponents(dateComponents, toDate: now, options: []) {
-            dateToReturn = later
-        }
-        else {
-            dateToReturn = now
-        }
-        
+        let tempDate = NSCalendar.currentCalendar().dateByAddingComponents(dateComponents, toDate: NSDate(), options: [])
+        self.ticketMilestone = tempDate!
         super.init(coder: aDecoder)
     }
     
-    // MARK: Properties (Public)
+    // MARK: Properties
     var selectedColumn: Column!
     var selectedTicket: Ticket? {
         didSet {
-            if let someTicket = selectedTicket {
+            if let someTicket = selectedTicket { //Editing a ticket
+                // TODO: Fetched Property: ticketNumber... how do I set it here?
                 //Required
                 ticketTitle = someTicket.ticketTitle
-                ticketNumber = someTicket.ticketNumber
-                ticketCreationDate = someTicket.ticketCreationDate
+                ticketMilestone = someTicket.ticketMilestone
+                //ticketNumber = someTicket.ticketNumber
                 
                 //Optional
-                
                 ticketAssignee = someTicket.ticketAssignee
                 ticketComments = someTicket.ticketComments
-                ticketDetail = someTicket.ticketDetail
-                ticketLabel = someTicket.ticketLabel
-                ticketMilestone = someTicket.ticketMilestone
-                
-                
+                ticketDescription = someTicket.ticketDetail
+                ticketGroupingLabel = someTicket.ticketLabel
+            } else { //Creating a ticket
+                ticketTitle = TicketCreationTableViewController.DefaultTitle
+                let dateComponents = NSDateComponents()
+                dateComponents.weekOfYear = 2
+                let tempDate = NSCalendar.currentCalendar().dateByAddingComponents(dateComponents, toDate: NSDate(), options: [])
+                ticketMilestone = tempDate!
+                ticketAssignee = nil
+                ticketComments = nil
+                ticketDescription = nil
+                ticketGroupingLabel = nil
             }
         }
     }
     
-    var delegate: TicketCreationTableViewControllerDelegate!
+    // TODO: Get delegate to work.
+    //var delegate: TicketCreationTableViewControllerDelegate!
     
     // MARK: Properties (Private)
-    //private var ticketName: String
-    private var milestoneDate: NSDate
-    private var groupingLabel: String?
-    //private var assignee: String?
+    // TODO: Do I need to include variables for optional fields?
+    //Required
+    private var ticketTitle: String
+    private var ticketMilestone: NSDate
+    
+    //Optional
+    private var ticketGroupingLabel: String?
+    private var ticketAssignee: String?
+    private var ticketDescription: String?
+    private var ticketComments: String?
     
     private var datePicker: UIDatePicker!
     private var dateFormatter = NSDateFormatter()
@@ -155,6 +155,11 @@ class TicketCreationTableViewController: UITableViewController, UITextFieldDeleg
     @IBOutlet weak var milestoneTextField: UITextField!
     @IBOutlet weak var groupingDetailLabel: UILabel!
     @IBOutlet weak var assigneeTextField: UITextField!
+    
+    // TODO: No Default Value
+    // I don't want to have default values for required fields - I'd like to just have placeholder text when I create a ticket.
+    private static let DefaultTitle = "Unnamed Ticket"
+    private static let DefaultMilestone = NSDate()
     
     private enum CreateTicketRows {
         case Title

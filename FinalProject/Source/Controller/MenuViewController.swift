@@ -12,7 +12,7 @@ import UIKit
 import CoreData
 
 class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, ProjectSettingsTableVCDelegate {
-    /* Outlets and Actions */
+    // MARK: IBAction
     @IBAction func menuToDirectoryButton(sender: AnyObject) {
         //
     }
@@ -37,12 +37,7 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         //
     }
     
-    
-    /* CoreData */
-    
-    
-    
-    /* Delegate Functions */
+    // MARK: Delegate Functions
     func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -55,42 +50,9 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /* View Controller Functions */
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
-    /*
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "LentItemListSegue" {
-            if let indexPath = categoryListTable.indexPathForSelectedRow, let selectedCategory = fetchedResultsController?.objectAtIndexPath(indexPath) as? Category {
-                let lentItemListViewController = segue.destinationViewController as! LentItemListViewController
-                lentItemListViewController.selectedCategory = selectedCategory
-                
-                categoryListTable.deselectRowAtIndexPath(indexPath, animated: true)
-            }
-        }
-        else if segue.identifier == "AddCategorySegue" {
-            let navigationController = segue.destinationViewController as! UINavigationController
-            let categoryDetailViewController = navigationController.topViewController as! CategoryDetailViewController
-            categoryDetailViewController.delegate = self
-        }
-        else if segue.identifier == "CategoryDetailSegue" {
-            if let indexPath = categoryListTable.indexPathForSelectedRow, let selectedCategory = fetchedResultsController?.objectAtIndexPath(indexPath) as? Category {
-                let categoryDetailViewController = segue.destinationViewController as! CategoryDetailViewController
-                categoryDetailViewController.selectedCategory = selectedCategory
-                categoryDetailViewController.delegate = self
-            }
-        }
-        else {
-            super.prepareForSegue(segue, sender: sender)
-        }
-    }
-    */
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "DirectorySegue") {
+            
             let navController = segue.destinationViewController as! UINavigationController
             let directoryVC = navController.topViewController as! ProjectDirectoryTableViewController
             directoryVC.delegate = self
@@ -105,6 +67,40 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         } else {
             super.prepareForSegue(segue, sender: sender)
         }
+    }
+    
+    /*
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     if segue.identifier == "LentItemListSegue" {
+     if let indexPath = categoryListTable.indexPathForSelectedRow, let selectedCategory = fetchedResultsController?.objectAtIndexPath(indexPath) as? Category {
+     let lentItemListViewController = segue.destinationViewController as! LentItemListViewController
+     lentItemListViewController.selectedCategory = selectedCategory
+     
+     categoryListTable.deselectRowAtIndexPath(indexPath, animated: true)
+     }
+     }
+     else if segue.identifier == "AddCategorySegue" {
+     let navigationController = segue.destinationViewController as! UINavigationController
+     let categoryDetailViewController = navigationController.topViewController as! CategoryDetailViewController
+     categoryDetailViewController.delegate = self
+     }
+     else if segue.identifier == "CategoryDetailSegue" {
+     if let indexPath = categoryListTable.indexPathForSelectedRow, let selectedCategory = fetchedResultsController?.objectAtIndexPath(indexPath) as? Category {
+     let categoryDetailViewController = segue.destinationViewController as! CategoryDetailViewController
+     categoryDetailViewController.selectedCategory = selectedCategory
+     categoryDetailViewController.delegate = self
+     }
+     }
+     else {
+     super.prepareForSegue(segue, sender: sender)
+     }
+     }
+     */
+    
+    // MARK: View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
