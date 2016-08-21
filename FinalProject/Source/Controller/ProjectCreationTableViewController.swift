@@ -42,35 +42,6 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
             return NotificationRow.AllRows.count
         }
     }
-    
-    //temporary
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath {
-        case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationTitleCell") as UITableViewCell!
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationMainColorCell") as UITableViewCell!
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationSecondaryColorCell") as UITableViewCell!
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationAddColumnCell") as UITableViewCell!
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationNotificationsCell") as UITableViewCell!
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationTitleCell") as UITableViewCell!
-            return cell
-        }
-    }
-    */
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch Sections.AllSections[indexPath.section] {
