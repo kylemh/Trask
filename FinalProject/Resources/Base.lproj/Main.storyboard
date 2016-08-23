@@ -329,7 +329,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProjectCreationMainColorCell" id="dRP-OZ-hrg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProjectCreationMainColorCell" id="dRP-OZ-hrg" customClass="ColorSelectorTableViewCell" customModule="FinalProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="164" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dRP-OZ-hrg" id="bdJ-Ji-s3B">
@@ -342,12 +342,21 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFy-mm-OML">
+                                            <rect key="frame" x="220" y="10" width="372" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="dYN-Br-OYq" firstAttribute="centerY" secondItem="bdJ-Ji-s3B" secondAttribute="centerY" id="9yZ-kJ-QY8"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iFy-mm-OML" secondAttribute="trailing" id="XRQ-Ci-KXk"/>
                                         <constraint firstItem="dYN-Br-OYq" firstAttribute="leading" secondItem="bdJ-Ji-s3B" secondAttribute="leading" constant="15" id="bU6-Hw-YcT"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="colorTextField" destination="iFy-mm-OML" id="Kce-On-kiV"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProjectCreationSecondaryColorCell" id="R6X-68-xf0">
                                 <rect key="frame" x="0.0" y="214" width="600" height="50"/>
@@ -362,12 +371,21 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EuG-Ca-0J9">
+                                            <rect key="frame" x="220" y="11" width="372" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="vXu-fw-yWy" firstAttribute="centerY" secondItem="Xfk-jl-k3T" secondAttribute="centerY" id="7x4-W0-zCC"/>
                                         <constraint firstItem="vXu-fw-yWy" firstAttribute="leading" secondItem="Xfk-jl-k3T" secondAttribute="leading" constant="15" id="G24-84-JB5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="EuG-Ca-0J9" secondAttribute="trailing" id="La9-Zj-1k2"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="colorTextField" destination="EuG-Ca-0J9" id="IDX-st-H8Y"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProjectCreationColumnCell" id="Uad-dh-JtG">
                                 <rect key="frame" x="0.0" y="264" width="600" height="50"/>
@@ -433,16 +451,8 @@
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FeN-Re-Jjl">
                                             <rect key="frame" x="536" y="10" width="51" height="31"/>
                                         </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status of Project's Ticket Milestone Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZN-hS-Ilm">
-                                            <rect key="frame" x="207" y="17" width="314" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="FeN-Re-Jjl" firstAttribute="leading" secondItem="6ZN-hS-Ilm" secondAttribute="trailing" constant="15" id="Jay-aj-rYN"/>
-                                        <constraint firstItem="6ZN-hS-Ilm" firstAttribute="centerY" secondItem="zJs-mf-RCP" secondAttribute="centerY" id="LCL-ue-qMC"/>
                                         <constraint firstItem="uPB-4b-LY1" firstAttribute="centerY" secondItem="zJs-mf-RCP" secondAttribute="centerY" id="NlK-sF-pbA"/>
                                         <constraint firstItem="FeN-Re-Jjl" firstAttribute="centerY" secondItem="zJs-mf-RCP" secondAttribute="centerY" id="Rzf-ug-BFj"/>
                                         <constraint firstItem="uPB-4b-LY1" firstAttribute="leading" secondItem="zJs-mf-RCP" secondAttribute="leading" constant="15" id="TbG-Uy-ENX"/>
@@ -485,8 +495,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kI7-LU-h6f" firstAttribute="leading" secondItem="0kz-Hd-adI" secondAttribute="leadingMargin" constant="-20" id="4gd-Wb-UQq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kI7-LU-h6f" secondAttribute="trailing" constant="-20" id="8Yr-Iv-OYK"/>
+                            <constraint firstItem="kI7-LU-h6f" firstAttribute="leading" secondItem="0kz-Hd-adI" secondAttribute="leading" id="4gd-Wb-UQq"/>
+                            <constraint firstAttribute="trailing" secondItem="kI7-LU-h6f" secondAttribute="trailing" id="8Yr-Iv-OYK"/>
                             <constraint firstItem="kI7-LU-h6f" firstAttribute="centerX" secondItem="0kz-Hd-adI" secondAttribute="centerX" id="e4I-82-o5S"/>
                             <constraint firstItem="TwD-3X-HZW" firstAttribute="top" secondItem="kI7-LU-h6f" secondAttribute="bottom" id="nxI-6c-XBM"/>
                             <constraint firstItem="kI7-LU-h6f" firstAttribute="top" secondItem="7pn-8a-aWQ" secondAttribute="bottom" id="yxA-tK-8sV"/>
@@ -726,10 +736,10 @@
             </objects>
             <point key="canvasLocation" x="2207" y="929"/>
         </scene>
-        <!--Column View Controller-->
+        <!--Ticket Column View Controller-->
         <scene sceneID="3oa-HX-xaZ">
             <objects>
-                <viewController storyboardIdentifier="Column1VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gft-ei-qgO" customClass="ColumnViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Column1VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gft-ei-qgO" customClass="TicketColumnViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AWW-UW-bjH"/>
                         <viewControllerLayoutGuide type="bottom" id="OFW-M1-AqZ"/>
@@ -756,10 +766,10 @@
             </objects>
             <point key="canvasLocation" x="2911" y="168"/>
         </scene>
-        <!--Column View Controller-->
+        <!--Ticket Column View Controller-->
         <scene sceneID="rtx-aV-tiT">
             <objects>
-                <viewController storyboardIdentifier="Column2VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ve2-fd-or5" customClass="ColumnViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Column2VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ve2-fd-or5" customClass="TicketColumnViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ko1-Mx-OKo"/>
                         <viewControllerLayoutGuide type="bottom" id="xi1-k4-uah"/>
@@ -798,10 +808,10 @@
             </objects>
             <point key="canvasLocation" x="3615" y="168"/>
         </scene>
-        <!--Column View Controller-->
+        <!--Ticket Column View Controller-->
         <scene sceneID="noK-nb-X8D">
             <objects>
-                <viewController storyboardIdentifier="Column3VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MgG-yb-YLL" customClass="ColumnViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Column3VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MgG-yb-YLL" customClass="TicketColumnViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pzc-Bi-UAI"/>
                         <viewControllerLayoutGuide type="bottom" id="b8e-Qn-N5d"/>
