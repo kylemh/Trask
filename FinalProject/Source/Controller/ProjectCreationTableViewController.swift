@@ -53,7 +53,6 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
                 cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationTitleCell") as UITableViewCell!
             case .MainColorSelector:
                 cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationMainColorCell") as UITableViewCell!
-                return cell
             case .SecondaryColorSelector:
                 cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationSecondaryColorCell") as UITableViewCell!
             }
@@ -81,7 +80,7 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         if (Sections.AllSections[indexPath.section] == .DetailRows && DetailRows.AllRows[indexPath.row] == .MainColorSelector) {
             let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ColorSelectorTableViewCell
             cell.colorTextField.becomeFirstResponder()
-            //            let cell = tableView(tableView, cellForRowAtIndexPath: indexPath) // as! ColorSelectorTableViewCell
+            // let cell = tableView(tableView, cellForRowAtIndexPath: indexPath) // as! ColorSelectorTableViewCell
             
             
         }
