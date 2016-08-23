@@ -43,7 +43,6 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         }
     }
     
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell
         switch Sections.AllSections[indexPath.section] {
@@ -80,7 +79,7 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         if (Sections.AllSections[indexPath.section] == .DetailRows && DetailRows.AllRows[indexPath.row] == .MainColorSelector) {
             let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ColorSelectorTableViewCell
             cell.colorTextField.becomeFirstResponder()
-            // let cell = tableView(tableView, cellForRowAtIndexPath: indexPath) // as! ColorSelectorTableViewCell
+//            let cell = tableView(tableView, cellForRowAtIndexPath: indexPath) // as! ColorSelectorTableViewCell
             
             
         }

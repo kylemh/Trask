@@ -4,6 +4,8 @@
 //
 //  Created by Kyle Holmberg on 8/1/16.
 //
+//  Citations for using other authors' materials
+//  __________________________________________________________________
 //
 
 import UIKit
@@ -94,7 +96,7 @@ class TicketsPageViewContainerController: UIViewController, UIPageViewController
         return firstViewControllerIndex
     }
     
-    
+
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
         pageControl.currentPage = orderedViewControllers.indexOf(pendingViewControllers.first!)!
@@ -131,8 +133,8 @@ class TicketsPageViewContainerController: UIViewController, UIPageViewController
                                                       completion: nil)
                 
             }
-            //            orderedViewControllers.
-            //            pageControl.currentPage = orderedViewControllers.indexOf(segue.destinationViewController)!
+//            orderedViewControllers.
+//            pageControl.currentPage = orderedViewControllers.indexOf(segue.destinationViewController)!
             
         }
         else {

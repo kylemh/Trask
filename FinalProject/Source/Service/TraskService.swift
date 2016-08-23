@@ -48,7 +48,7 @@ class TraskService {
         
         return resultsController
     }
-    
+ 
     // MARK: Add Project to Directory
     func addProject(name: String, mainColor: NSObject, secondaryColor: NSObject, possibleColumnsArray: [String], notificationsStatus: Bool, orderIndex: Int) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
@@ -136,7 +136,7 @@ class TraskService {
             print("'moveTicket' save finished")
         }
     }
-    
+ 
     // MARK: Edit Project Attributes
     func editProject(project: Project, newName: String, newMainColor: NSObject, newSecondaryColor: NSObject,newNotificationStatus: Bool) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext

@@ -4,6 +4,8 @@
 //
 //  Created by Kyle Holmberg on 8/1/16.
 //
+//  Citations for using other authors' materials
+//  __________________________________________________________________
 //
 
 import UIKit
@@ -79,7 +81,7 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         //
     }
-    
+
     // Mark: Delegate Function
     func projectCreationVCDidFinish(projectCreationVC: ProjectCreationTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -100,7 +102,7 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
             projectDirectoryTableView.deselectRowAtIndexPath(selectedIndexPath, animated: false)
         }
     }
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -114,12 +116,12 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         if (segue.identifier == "createProjectSegue") {
             let projectCreationVC = segue.destinationViewController as! ProjectCreationTableViewController
             projectCreationVC.delegate = self
-            // TODO: Create segue behavior for selecting a project cell in the project directory TableVC
-            /*
-             } else if (A PROJECT CELL IS SELECTED) {
+        // TODO: Create segue behavior for selecting a project cell in the project directory TableVC
+        /*
+        } else if (A PROJECT CELL IS SELECTED) {
              maintain a variable containing current project to persist data to settings, notifications, and tickets
              set destinationVC to Menu
-             */
+        */
         } else {
             super.prepareForSegue(segue, sender: sender)
         }
