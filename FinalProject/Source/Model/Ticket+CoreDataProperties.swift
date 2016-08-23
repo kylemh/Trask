@@ -13,7 +13,7 @@ import Foundation
 import CoreData
 
 extension Ticket {
-
+    
     @NSManaged var ticketAssignee: String?
     @NSManaged var ticketComments: String?
     @NSManaged var ticketCreationDate: NSDate
@@ -24,5 +24,5 @@ extension Ticket {
     @NSManaged var ticketTitle: String
     
     @NSManaged var parentColumn: Column
-
+    
 }

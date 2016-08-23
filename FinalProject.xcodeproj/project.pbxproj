@@ -43,6 +43,7 @@
 		97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D61D4F4E1100621F98 /* MenuViewController.swift */; };
 		97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */; };
 		97B552DF1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */; };
+		97C249B81D6BCE060075D528 /* ColorSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C249B71D6BCE060075D528 /* ColorSelectorTableViewCell.swift */; };
 		97F22DEE1D6937F0001253B2 /* TicketCreationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F22DED1D6937F0001253B2 /* TicketCreationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +138,7 @@
 		97B552D61D4F4E1100621F98 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsPageViewController.swift; sourceTree = "<group>"; };
 		97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDirectoryTableViewController.swift; sourceTree = "<group>"; };
+		97C249B71D6BCE060075D528 /* ColorSelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorSelectorTableViewCell.swift; path = View/ColorSelectorTableViewCell.swift; sourceTree = "<group>"; };
 		97F22DED1D6937F0001253B2 /* TicketCreationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketCreationTableViewController.swift; path = FinalProject/Source/Controller/TicketCreationTableViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -246,6 +248,7 @@
 		562BB1581B5562D100B73F46 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				97C249B61D6BCD950075D528 /* View */,
 				978B7AE41D66190200172F1B /* Service */,
 				975DCA391D58F92C0017042A /* Model */,
 				562BB1591B5562E400B73F46 /* Controller */,
@@ -259,8 +262,8 @@
 				562BB1371B55627000B73F46 /* AppDelegate.swift */,
 				97B552D61D4F4E1100621F98 /* MenuViewController.swift */,
 				97B552DE1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift */,
-				978B7ADB1D64511100172F1B /* ProjectDirectoryTableViewCell.swift */,
 				978B7B421D6702DA00172F1B /* ProjectCreationTableViewController.swift */,
+				978B7ADB1D64511100172F1B /* ProjectDirectoryTableViewCell.swift */,
 				97B552DC1D4F4EA800621F98 /* TicketsPageViewController.swift */,
 				978B7AD31D62F85500172F1B /* TicketColumnViewController.swift */,
 				97F22DED1D6937F0001253B2 /* TicketCreationTableViewController.swift */,
@@ -360,6 +363,14 @@
 				978B7AE51D66196100172F1B /* TraskService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		97C249B61D6BCD950075D528 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				97C249B71D6BCE060075D528 /* ColorSelectorTableViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -575,6 +586,7 @@
 				56BEFEBE1B68C3E0006F0664 /* Model.xcdatamodeld in Sources */,
 				978B7ADD1D64511100172F1B /* ProjectDirectoryTableViewCell.swift in Sources */,
 				978B7B3B1D66DDAB00172F1B /* Ticket.swift in Sources */,
+				97C249B81D6BCE060075D528 /* ColorSelectorTableViewCell.swift in Sources */,
 				97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */,
 				978B7B3C1D66DDAB00172F1B /* Columns+CoreDataProperties.swift in Sources */,
 				978B7B3A1D66DDAB00172F1B /* Ticket+CoreDataProperties.swift in Sources */,
