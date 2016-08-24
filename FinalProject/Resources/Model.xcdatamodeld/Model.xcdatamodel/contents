@@ -8,8 +8,8 @@
         <relationship name="parentProject" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="childColumn" inverseEntity="Project" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName=".Project" syncable="YES">
-        <attribute name="projectColorMain" attributeType="Transformable" syncable="YES"/>
-        <attribute name="projectColorSecondary" attributeType="Transformable" syncable="YES"/>
+        <attribute name="projectColorMain" attributeType="String" syncable="YES"/>
+        <attribute name="projectColorText" attributeType="String" syncable="YES"/>
         <attribute name="projectCreationDate" attributeType="Date" minDateTimeInterval="0" maxDateTimeInterval="0" syncable="YES"/>
         <attribute name="projectName" attributeType="String" syncable="YES"/>
         <attribute name="projectNotifications" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>

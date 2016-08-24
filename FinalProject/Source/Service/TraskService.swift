@@ -50,14 +50,14 @@ class TraskService {
     }
  
     // MARK: Add Project to Directory
-    func addProject(name: String, mainColor: NSObject, secondaryColor: NSObject, possibleColumnsArray: [String], notificationsStatus: Bool, orderIndex: Int) throws {
+    func addProject(name: String, mainColor: String, textColor: String, possibleColumnsArray: [String], notificationsStatus: Bool, orderIndex: Int) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let project = NSEntityDescription.insertNewObjectForNamedEntity(Project.self, inManagedObjectContext: context)
         
         //Attributes
         project.projectName = name
         project.projectColorMain = mainColor
-        project.projectColorSecondary = secondaryColor
+        project.projectColorText = textColor
         project.projectNotifications = notificationsStatus
         project.projectCreationDate = NSDate()
         project.projectTicketCount = 0 //Ticket Count is 0 for new Project
@@ -138,13 +138,13 @@ class TraskService {
     }
  
     // MARK: Edit Project Attributes
-    func editProject(project: Project, newName: String, newMainColor: NSObject, newSecondaryColor: NSObject,newNotificationStatus: Bool) throws {
+    func editProject(project: Project, newName: String, newMainColor: String, newTextColor: String,newNotificationStatus: Bool) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         
         //Attribute Changes
         project.projectName = newName
         project.projectColorMain = newMainColor
-        project.projectColorSecondary = newSecondaryColor
+        project.projectColorText = newTextColor
         project.projectNotifications = newNotificationStatus
         
         try context.save()

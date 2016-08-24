@@ -10,6 +10,7 @@
 
 import UIKit
 import CoreData
+import CoreDataService
 
 class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, ProjectSettingsTableVCDelegate {
     // MARK: IBAction
@@ -52,7 +53,6 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "DirectorySegue") {
-            
             let navController = segue.destinationViewController as! UINavigationController
             let directoryVC = navController.topViewController as! ProjectDirectoryTableViewController
             directoryVC.delegate = self

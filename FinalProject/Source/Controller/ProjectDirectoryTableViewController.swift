@@ -18,7 +18,7 @@ protocol DirectoryTableVCDelegate: class {
 
 class ProjectDirectoryTableViewController: UITableViewController, CreateProjectTableVCDelegate, NSFetchedResultsControllerDelegate {
     // Mark: IBActions
-    weak var delegate : DirectoryTableVCDelegate?
+    weak var delegate: DirectoryTableVCDelegate?
     
     @IBAction private func back(sender: AnyObject) {
         delegate?.projectDirectoryTableVCDidFinish(self)
@@ -92,7 +92,7 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         super.viewDidLoad()
         title = "Project Directory"
         
-        setupResultsController()
+        //setupResultsController()
     }
     
     override func viewWillAppear(animated: Bool) {

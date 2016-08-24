@@ -10,6 +10,7 @@
 
 import UIKit
 import CoreData
+import CoreDataService
 
 protocol TicketsPageVCDelegate: class {
     func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewContainerController)
@@ -19,7 +20,7 @@ class TicketsPageViewContainerController: UIViewController, UIPageViewController
     /* Outlets and Actions */
     var pageViewController: UIPageViewController!
     var pageControl: UIPageControl!
-    weak var delegateMenu : TicketsPageVCDelegate?
+    weak var delegateMenu: TicketsPageVCDelegate?
     
     @IBAction private func back(sender: AnyObject) {
         delegateMenu?.ticketsPageVCDidFinish(self)
@@ -28,7 +29,6 @@ class TicketsPageViewContainerController: UIViewController, UIPageViewController
     @IBAction private func add(sender: AnyObject) {
         //
     }
-    
     
     /* Page View Controller Population */
     //How do I bring in core data to set the values?
@@ -118,6 +118,10 @@ class TicketsPageViewContainerController: UIViewController, UIPageViewController
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func ticketCreationVCDidFinish(ticketCreationVC: TicketCreationTableViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
