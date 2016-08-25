@@ -30,8 +30,7 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         if let resultsController = try? TraskService.sharedTraskService.fetchedResultsControllerForProjectList() {
             resultsController.delegate = self
             fetchedResultsController = resultsController
-        }
-        else {
+        } else {
             fetchedResultsController = nil
         }
         
@@ -45,8 +44,7 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         
         if let someSections = fetchedResultsController?.sections {
             result = someSections.count
-        }
-        else {
+        } else {
             result = 0
         }
         
@@ -89,20 +87,15 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Cancel"
-        navigationItem.backBarButtonItem = backItem
-        
         if (segue.identifier == "createProjectSegue") {
             let projectCreationVC = segue.destinationViewController as! ProjectCreationTableViewController
             projectCreationVC.delegate = self
             projectCreationVC.title = "Add Project"
-            // TODO: Create segue behavior for selecting a project cell in the project directory TableVC
-            /*
-             } else if (A PROJECT CELL IS SELECTED) {
-             maintain a variable containing current project to persist data to settings, notifications, and tickets
-             set destinationVC to Menu
-             */
+            let backItem = UIBarButtonItem()
+            backItem.title = "Cancel"
+            navigationItem.backBarButtonItem = backItem
+        } else if (segue.identifier == "selectProjectSegue") {
+             //
         } else {
             super.prepareForSegue(segue, sender: sender)
         }
@@ -112,9 +105,7 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
     // MARK: View Controller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Project Directory"
-                
         //setupResultsController()
     }
     

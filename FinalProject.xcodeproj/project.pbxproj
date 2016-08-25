@@ -373,8 +373,8 @@
 			children = (
 				B3B131E31D6D83D6008EEF03 /* TitleTableViewCell.swift */,
 				97EA97111D6D95C300DD0929 /* ColorSelectorTableViewCell.swift */,
-				B3B131E51D6D83F1008EEF03 /* ColumnTableViewCell.swift */,
 				97EA970F1D6D95BD00DD0929 /* NotificationsTableViewCell.swift */,
+				B3B131E51D6D83F1008EEF03 /* ColumnTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
