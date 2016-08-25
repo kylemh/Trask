@@ -104,7 +104,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1h-nd-aRc">
-                                <rect key="frame" x="275" y="147" width="50" height="30"/>
+                                <rect key="frame" x="273.5" y="145.5" width="53" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Tickets"/>
                                 <connections>
                                     <action selector="menuToTicketsButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="dZu-Dg-luh"/>
@@ -112,57 +113,60 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5td-uP-vVU">
-                                <rect key="frame" x="257" y="261" width="87" height="30"/>
+                                <rect key="frame" x="254.5" y="259" width="92" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Notifications"/>
                                 <connections>
                                     <action selector="menuToNotificationsButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="QX8-cp-ElL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIl-Yy-Pbo">
-                                <rect key="frame" x="272" y="487" width="57" height="30"/>
+                                <rect key="frame" x="270.5" y="486.5" width="60" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <action selector="menuToSettingsButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="KYW-Fb-1Og"/>
                                     <segue destination="RZs-Y5-X6a" kind="show" identifier="SettingsSegue" id="OOv-WM-rlg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9x-0W-WQe">
+                                <rect key="frame" x="283" y="373" width="35" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Chat"/>
+                                <connections>
+                                    <action selector="menuToChatButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="uB5-YM-5Mc"/>
+                                </connections>
+                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBW-Mf-Syx">
-                                <rect key="frame" x="275" y="185" width="50" height="68"/>
+                                <rect key="frame" x="275" y="185.5" width="50" height="65.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="I0j-eg-dMj"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pV-4p-AVg">
-                                <rect key="frame" x="275" y="299" width="50" height="67"/>
+                                <rect key="frame" x="275" y="299" width="50" height="66"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="D8u-fZ-qe4"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjp-6C-Jqt">
-                                <rect key="frame" x="275" y="412" width="50" height="67"/>
+                                <rect key="frame" x="275" y="413" width="50" height="65.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="hwo-3W-h4P"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5X-0C-UOw">
-                                <rect key="frame" x="275" y="525" width="50" height="67"/>
+                                <rect key="frame" x="275" y="526.5" width="50" height="65.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="ayZ-94-AEq"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9x-0W-WQe">
-                                <rect key="frame" x="284" y="374" width="33" height="30"/>
-                                <state key="normal" title="Chat"/>
-                                <connections>
-                                    <action selector="menuToChatButton:" destination="tmd-VN-ReY" eventType="touchUpInside" id="uB5-YM-5Mc"/>
-                                </connections>
-                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHD-yo-8jr">
-                                <rect key="frame" x="275" y="72" width="50" height="67"/>
+                                <rect key="frame" x="275" y="72" width="50" height="65.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="lod-T6-j1f"/>
