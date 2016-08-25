@@ -85,7 +85,6 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
             case .Column3Row:
                 cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
             case .Column4Row:
-                // if columnCount > 4
                 if indexPath.row <= columnCount {
                     cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
                 } else {
