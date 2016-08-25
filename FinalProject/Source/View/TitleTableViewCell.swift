@@ -9,9 +9,7 @@
 import UIKit
 
 class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
-
-    @IBOutlet weak var titleTextField: UITextField!
-    
+    // MARK: View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,4 +23,7 @@ class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
 
+    
+    // MARK: Properties
+    @IBOutlet weak var titleTextField: UITextField!
 }

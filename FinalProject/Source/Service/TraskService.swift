@@ -24,6 +24,7 @@ class TraskService {
         
         return resultsController
     }
+ 
     
     // MARK: Columns Fetch
     func fetchedResultsControllerForColumnsInProject(project: Project) throws -> NSFetchedResultsController {
@@ -36,6 +37,7 @@ class TraskService {
         
         return resultsController
     }
+ 
     
     // MARK: Tickets Fetch
     func fetchedResultsControllerForTicketsInColumn(column: Column) throws -> NSFetchedResultsController {
@@ -49,6 +51,7 @@ class TraskService {
         return resultsController
     }
  
+    
     // MARK: Add Project to Directory
     func addProject(name: String, mainColor: String, textColor: String, possibleColumnsArray: [String], notificationsStatus: Bool, orderIndex: Int) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
@@ -77,6 +80,7 @@ class TraskService {
         }
     }
     
+    
     // MARK: Add Column to Project
     func addColumn(name: String, index: Int, parent: Project) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
@@ -96,6 +100,7 @@ class TraskService {
             print("'addColumn' save finished")
         }
     }
+    
     
     // MARK: Add Ticket to Column
     func addTicket(name: String, assignee: String?, comments: String?, detail: String?, label: String?, milestone: NSDate, column: Column) throws {
@@ -124,6 +129,7 @@ class TraskService {
         }
     }
     
+    
     // MARK: Move Ticket
     func moveTicket(ticket: Ticket, column: Column) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
@@ -137,6 +143,7 @@ class TraskService {
         }
     }
  
+    
     // MARK: Edit Project Attributes
     func editProject(project: Project, newName: String, newMainColor: String, newTextColor: String,newNotificationStatus: Bool) throws {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
@@ -153,6 +160,7 @@ class TraskService {
             print("'editProject' save finished")
         }
     }
+    
     
     // MARK: Edit Ticket Attributes
     func editTicket(ticket: Ticket, newName: String, newAssignee: String?, newComment: String?, newDetail: String?, newLabel: String?, newMilestone: NSDate) throws {
@@ -172,6 +180,29 @@ class TraskService {
             print("'editTicket' save finished")
         }
     }
+    
+    
+    // MARK: Reindex Column
+    func reindexColumns(columns: Array<Column>, shiftForward: Bool, withSaveCompletionHandler saveCompletionHandler: SaveCompletionHandler? = nil) throws {
+        for column in columns {
+            let currentOrderIndex = column.columnIndex.integerValue
+            if shiftForward {
+                column.columnIndex = currentOrderIndex + 1
+            } else {
+                column.columnIndex = currentOrderIndex - 1
+            }
+        }
+        
+        let context = CoreDataService.sharedCoreDataService.mainQueueContext
+        try context.save()
+        
+        CoreDataService.sharedCoreDataService.saveRootContext {
+            print("'reindexColumns' save finished")
+            saveCompletionHandler?()
+            
+        }
+    }
+    
     
     // MARK: Delete Column
     func deleteColumn(markedColumn: Column, withNewParentColumn newParentColumn: Column, withSaveCompletionHandler saveCompletionHandler: SaveCompletionHandler) throws {
@@ -203,30 +234,11 @@ class TraskService {
         }
     }
     
-    // MARK: Reindex Column
-    func reindexColumns(columns: Array<Column>, shiftForward: Bool, withSaveCompletionHandler saveCompletionHandler: SaveCompletionHandler? = nil) throws {
-        for column in columns {
-            let currentOrderIndex = column.columnIndex.integerValue
-            if shiftForward {
-                column.columnIndex = currentOrderIndex + 1
-            } else {
-                column.columnIndex = currentOrderIndex - 1
-            }
-        }
-        
-        let context = CoreDataService.sharedCoreDataService.mainQueueContext
-        try context.save()
-        
-        CoreDataService.sharedCoreDataService.saveRootContext {
-            print("'reindexColumns' save finished")
-            saveCompletionHandler?()
-            
-        }
-    }
     
     // MARK: Initialization
     private init() {
     }
+    
     
     // MARK: Singleton
     static var sharedTraskService = TraskService()

@@ -17,11 +17,7 @@ protocol TicketsPageVCDelegate: class {
 }
 
 class TicketsPageViewContainerController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    /* Outlets and Actions */
-    var pageViewController: UIPageViewController!
-    var pageControl: UIPageControl!
-    weak var delegateMenu: TicketsPageVCDelegate?
-    
+    // MARK: IBActions
     @IBAction private func back(sender: AnyObject) {
         delegateMenu?.ticketsPageVCDidFinish(self)
     }
@@ -30,22 +26,8 @@ class TicketsPageViewContainerController: UIViewController, UIPageViewController
         //
     }
     
-    /* Page View Controller Population */
-    //How do I bring in core data to set the values?
-    //How do I create a variable amount of column instantiations?
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColumnVC("Column One", columnTicketCount: nil, tempColumnNumber: "1"),
-                self.newColumnVC("Column Two", columnTicketCount: nil, tempColumnNumber: "2"),
-                self.newColumnVC("Column Three", columnTicketCount: nil, tempColumnNumber: "3")]
-    }()
     
-    private func newColumnVC(columnName: String, columnTicketCount: Int32?, tempColumnNumber: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewControllerWithIdentifier("Column\(tempColumnNumber)VC")
-    }
-    
-    
-    /* Page View Controller Functions */
+    // MARK: Page View Controller Population
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
             return nil
@@ -96,28 +78,17 @@ class TicketsPageViewContainerController: UIViewController, UIPageViewController
         return firstViewControllerIndex
     }
     
-
-    
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
         pageControl.currentPage = orderedViewControllers.indexOf(pendingViewControllers.first!)!
     }
     
     
-    /* View Controller Functions */
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //        100,self.view.frame.size.height-100,self.view.frame.size.width-200,100
-        pageControl = UIPageControl(frame: CGRect(x: 100.0, y: self.view.frame.height - 100.0, width: self.view.frame.width - 200.0, height: 100.0))
-        pageControl.numberOfPages = orderedViewControllers.count
-        view.addSubview(pageControl)
-        
-        
-        // Do any additional setup after loading the view.
-    }
+    // MARK: View Management
+    weak var delegateMenu: TicketsPageVCDelegate?
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func newColumnVC(columnName: String, columnTicketCount: Int32?, tempColumnNumber: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil) .
+            instantiateViewControllerWithIdentifier("Column\(tempColumnNumber)VC")
     }
     
     func ticketCreationVCDidFinish(ticketCreationVC: TicketCreationTableViewController) {
@@ -137,12 +108,33 @@ class TicketsPageViewContainerController: UIViewController, UIPageViewController
                                                       completion: nil)
                 
             }
-//            orderedViewControllers.
-//            pageControl.currentPage = orderedViewControllers.indexOf(segue.destinationViewController)!
-            
-        }
-        else {
+        } else {
             super.prepareForSegue(segue, sender: sender)
         }
     }
+    
+    
+    // MARK: View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        pageControl = UIPageControl(frame: CGRect(x: 100.0, y: self.view.frame.height - 100.0, width: self.view.frame.width - 200.0, height: 100.0))
+        pageControl.numberOfPages = orderedViewControllers.count
+        view.addSubview(pageControl)
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    // MARK: Properties
+    var pageViewController: UIPageViewController!
+    var pageControl: UIPageControl!
+    
+    // TODO: How do I bring in core data to set the values?
+    // TODO: How do I create a variable amount of column instantiations?
+    // MARK: Hard-coded page views - REMOVE
+    private(set) lazy var orderedViewControllers: [UIViewController] = {
+        return [self.newColumnVC("Column One", columnTicketCount: nil, tempColumnNumber: "1"),
+                self.newColumnVC("Column Two", columnTicketCount: nil, tempColumnNumber: "2"),
+                self.newColumnVC("Column Three", columnTicketCount: nil, tempColumnNumber: "3")]
+    }()
 }

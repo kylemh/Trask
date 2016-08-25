@@ -11,7 +11,5 @@ import CoreData
 
 
 class Column: Project {
-    //static var entityName: String {
-    //    return "Column"
-    //}
+
 }

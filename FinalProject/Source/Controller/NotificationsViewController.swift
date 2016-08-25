@@ -13,14 +13,13 @@ import UIKit
 import CoreData
 
 class NotificationsViewController: UIViewController {
-    /* Outlets and Actions */
+    // MARK: IBAction
     @IBAction func closeNotificationsButton(sender: AnyObject) {
         self.removeAnimate()
     }
-    //optional: instead of close button, make it so user can rid pop-up screen by touching outside of it.
     
     
-    /* Pop-Up Animation - Provided by Citation1 */
+    // MARK: Pop-Up Functions
     func showAnimate() {
         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
@@ -43,17 +42,16 @@ class NotificationsViewController: UIViewController {
     }
     
     
-    /* View Controller Functions */
+    // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         self.showAnimate()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.removeAnimate))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }

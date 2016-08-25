@@ -15,11 +15,9 @@ protocol CreateProjectTableVCDelegate: class {
 }
 
 class ProjectCreationTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-    
-    @IBOutlet weak var navItem: UINavigationItem!
-    
+    // MARK: CoreData Connection
+    /*
     func addProject() {
-        
         let name = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TitleTableViewCell).titleTextField.text
         let color = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! ColorSelectorTableViewCell).colorTextField.text
         var columns = Array<String>()
@@ -32,36 +30,9 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
 //        TraskService.addProject(<#T##TraskService#>)
         self.navigationController?.popViewControllerAnimated(true)
     }
+    */
     
-    // MARK: View Controller Functions
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.title = "Add Project"
-        
-        let button = UIButton(type: .Custom)
-        button.setTitle("Add", forState: .Normal)
-        button.addTarget(self, action: #selector(ProjectCreationTableViewController.addProject), forControlEvents: .TouchUpInside)
-        button.bounds = CGRectMake(0,0,70,34)
-        button.tintColor = UIColor.redColor()
-        button.titleLabel?.textColor = UIColor.redColor()
-        button.enabled = true
-        let item = UIBarButtonItem(customView: button)
-        item.tintColor = UIColor.redColor()
-        item.enabled = true
-        self.navItem.rightBarButtonItem = item
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: Table View Functions
+    // MARK: Table View DataSource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return Sections.AllSections.count
     }
@@ -130,6 +101,33 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    
+    // MARK: View Management
+    weak var delegate: CreateProjectTableVCDelegate?
+    
+    
+    // MARK: View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //self.title = "Add Project"
+        
+        /*
+         let button = UIButton(type: .Custom)
+         button.setTitle("Add", forState: .Normal)
+         button.addTarget(self, action: #selector(ProjectCreationTableViewController.addProject), forControlEvents: .TouchUpInside)
+         button.bounds = CGRectMake(0,0,70,34)
+         button.tintColor = UIColor.redColor()
+         button.titleLabel?.textColor = UIColor.redColor()
+         button.enabled = true
+         let item = UIBarButtonItem(customView: button)
+         item.tintColor = UIColor.redColor()
+         item.enabled = true
+         self.navItem.rightBarButtonItem = item
+         */
+    }
+    
+    
     // MARK: Section/Row Enums
     enum Sections {
         case DetailSection
@@ -146,7 +144,6 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         static let AllRows: Array<DetailSection> = [.ProjectTitleRow, .ColorSelectorRow]
     }
     
-    weak var delegate : CreateProjectTableVCDelegate?
     
     // MARK: Properties (Private)
     private var fetchedResultsController: NSFetchedResultsController?
@@ -154,8 +151,11 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
     private var ignoreUpdates = false
     private var columnCount = 3
     
+    
     // MARK : Properties (IBOutlet)
     @IBOutlet weak private var projectCreationTableView: UITableView!
+    @IBOutlet weak var navItem: UINavigationItem!
+    
     
     // MARK: Properties (Private Static Constant)
     private static let DefaultName = "Unnamed Project"

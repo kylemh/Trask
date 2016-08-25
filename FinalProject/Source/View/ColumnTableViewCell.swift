@@ -9,9 +9,7 @@
 import UIKit
 
 class ColumnTableViewCell: UITableViewCell, UITextFieldDelegate {
-
-    @IBOutlet weak var columnTextField: UITextField!
-    
+    // MARK: View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,4 +23,7 @@ class ColumnTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
 
+    
+    // MARK: Properties
+    @IBOutlet weak var columnTextField: UITextField!
 }

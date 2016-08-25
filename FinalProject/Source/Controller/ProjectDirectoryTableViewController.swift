@@ -4,8 +4,6 @@
 //
 //  Created by Kyle Holmberg on 8/1/16.
 //
-//  Citations for using other authors' materials
-//  __________________________________________________________________
 //
 
 import UIKit
@@ -18,8 +16,6 @@ protocol DirectoryTableVCDelegate: class {
 
 class ProjectDirectoryTableViewController: UITableViewController, CreateProjectTableVCDelegate, NSFetchedResultsControllerDelegate {
     // Mark: IBActions
-    weak var delegate: DirectoryTableVCDelegate?
-    
     @IBAction private func back(sender: AnyObject) {
         delegate?.projectDirectoryTableVCDidFinish(self)
     }
@@ -28,7 +24,8 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         //
     }
     
-    // MARK: Private
+    
+    // MARK: CoreData Connection
     private func setupResultsController() {
         if let resultsController = try? TraskService.sharedTraskService.fetchedResultsControllerForProjectList() {
             resultsController.delegate = self
@@ -41,7 +38,8 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         projectDirectoryTableView.reloadData()
     }
     
-    // Mark: Table Population
+    
+    // MARK: Table Population
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         let result: Int
         
@@ -82,15 +80,42 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         //
     }
 
-    // Mark: Delegate Function
+    
+    // MARK: View Management
+    weak var delegate: DirectoryTableVCDelegate?
+    
     func projectCreationVCDidFinish(projectCreationVC: ProjectCreationTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Cancel"
+        navigationItem.backBarButtonItem = backItem
+        
+        if (segue.identifier == "createProjectSegue") {
+            let projectCreationVC = segue.destinationViewController as! ProjectCreationTableViewController
+            projectCreationVC.delegate = self
+            projectCreationVC.title = "Add Project"
+            // TODO: Create segue behavior for selecting a project cell in the project directory TableVC
+            /*
+             } else if (A PROJECT CELL IS SELECTED) {
+             maintain a variable containing current project to persist data to settings, notifications, and tickets
+             set destinationVC to Menu
+             */
+        } else {
+            super.prepareForSegue(segue, sender: sender)
+        }
+    }
+    
+    
     // MARK: View Controller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Project Directory"
+        
+        self.title = "Project Directory"
+        
+        self.accessibilityValue = "Create Project"
         
         //setupResultsController()
     }
@@ -102,34 +127,12 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
             projectDirectoryTableView.deselectRowAtIndexPath(selectedIndexPath, animated: false)
         }
     }
-        
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Cancel"
-        navigationItem.backBarButtonItem = backItem
-        
-        if (segue.identifier == "createProjectSegue") {
-            let projectCreationVC = segue.destinationViewController as! ProjectCreationTableViewController
-            projectCreationVC.delegate = self
-        // TODO: Create segue behavior for selecting a project cell in the project directory TableVC
-        /*
-        } else if (A PROJECT CELL IS SELECTED) {
-             maintain a variable containing current project to persist data to settings, notifications, and tickets
-             set destinationVC to Menu
-        */
-        } else {
-            super.prepareForSegue(segue, sender: sender)
-        }
-    }
+
     
     // MARK: Properties (Private)
     private var ignoreUpdates = false
     private var fetchedResultsController: NSFetchedResultsController?
+    
     
     // MARK: IBOutlets
     @IBOutlet weak private var projectDirectoryTableView: UITableView!

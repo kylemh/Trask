@@ -12,7 +12,7 @@ import UIKit
 import CoreData
 import CoreDataService
 
-class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, ProjectSettingsTableVCDelegate {
+class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPageVCDelegate, CreateProjectTableVCDelegate {
     // MARK: IBAction
     @IBAction func menuToDirectoryButton(sender: AnyObject) {
         //
@@ -38,7 +38,7 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
         //
     }
     
-    // MARK: Delegate Functions
+    // MARK: View Management
     func projectDirectoryTableVCDidFinish(directoryVC: ProjectDirectoryTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -46,8 +46,8 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
     func ticketsPageVCDidFinish(ticketsVC: TicketsPageViewContainerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    func projectSettingsTableVCDidFinish(settingsVC: ProjectSettingsTableViewController) {
+
+    func projectCreationVCDidFinish(projectCreationVC: ProjectCreationTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -61,70 +61,31 @@ class MenuViewController: UIViewController, DirectoryTableVCDelegate, TicketsPag
             backItem.title = "Menu"
             navigationItem.backBarButtonItem = backItem
         } else if (segue.identifier == "SettingsSegue") {
-            let navController = segue.destinationViewController as! UINavigationController
-            let settingsVC = navController.topViewController as! ProjectSettingsTableViewController
-            settingsVC.delegate = self
+            let projectCreationVC = segue.destinationViewController as! ProjectCreationTableViewController
+            projectCreationVC.delegate = self
+            projectCreationVC.navItem.title = "Edit Project"
+            //segue.destinationViewController.title = "Edit Project"
+            let backItem = UIBarButtonItem()
+            backItem.title = "Menu"
+            navigationItem.backBarButtonItem = backItem
         } else {
             super.prepareForSegue(segue, sender: sender)
         }
     }
     
-    /*
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     if segue.identifier == "LentItemListSegue" {
-     if let indexPath = categoryListTable.indexPathForSelectedRow, let selectedCategory = fetchedResultsController?.objectAtIndexPath(indexPath) as? Category {
-     let lentItemListViewController = segue.destinationViewController as! LentItemListViewController
-     lentItemListViewController.selectedCategory = selectedCategory
-     
-     categoryListTable.deselectRowAtIndexPath(indexPath, animated: true)
-     }
-     }
-     else if segue.identifier == "AddCategorySegue" {
-     let navigationController = segue.destinationViewController as! UINavigationController
-     let categoryDetailViewController = navigationController.topViewController as! CategoryDetailViewController
-     categoryDetailViewController.delegate = self
-     }
-     else if segue.identifier == "CategoryDetailSegue" {
-     if let indexPath = categoryListTable.indexPathForSelectedRow, let selectedCategory = fetchedResultsController?.objectAtIndexPath(indexPath) as? Category {
-     let categoryDetailViewController = segue.destinationViewController as! CategoryDetailViewController
-     categoryDetailViewController.selectedCategory = selectedCategory
-     categoryDetailViewController.delegate = self
-     }
-     }
-     else {
-     super.prepareForSegue(segue, sender: sender)
-     }
-     }
-     */
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        self.title = "Menu"
+        
+        // NavBar Color and Title based upon selected project
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //Place to do screen refresh, network request, or last-minute view setup
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        //App is loaded and ready. Commence heavy activity
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        //App has been removed from screen. Clean-up memory usage.
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        //Memory clean-up complete.
+        
+        // Update NavBar Color and Title based upon selected project
     }
 }

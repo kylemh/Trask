@@ -18,7 +18,6 @@
 		56BEFF411B68CE0A006F0664 /* CoreDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF401B68CE0A006F0664 /* CoreDataServiceTests.swift */; };
 		56BEFF441B68CE0A006F0664 /* CoreDataService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BEFF2D1B68CE0A006F0664 /* CoreDataService.framework */; };
 		56BEFF451B68CE0A006F0664 /* CoreDataService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56BEFF2D1B68CE0A006F0664 /* CoreDataService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		977B67EF1D53A0140021D8FC /* ProjectSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B67EE1D53A0140021D8FC /* ProjectSettingsTableViewController.swift */; };
 		978B7AD41D62F85500172F1B /* TicketColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7AD31D62F85500172F1B /* TicketColumnViewController.swift */; };
 		978B7ADD1D64511100172F1B /* ProjectDirectoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7ADB1D64511100172F1B /* ProjectDirectoryTableViewCell.swift */; };
 		978B7AE61D66196100172F1B /* TraskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7AE51D66196100172F1B /* TraskService.swift */; };
@@ -126,7 +125,6 @@
 		56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription_Service.swift; sourceTree = "<group>"; };
 		56BEFF531B68CE58006F0664 /* NSFetchRequest_Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchRequest_Service.swift; sourceTree = "<group>"; };
 		56BEFF581B68CE58006F0664 /* NamedEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamedEntity.swift; sourceTree = "<group>"; };
-		977B67EE1D53A0140021D8FC /* ProjectSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSettingsTableViewController.swift; sourceTree = "<group>"; };
 		978B7AD31D62F85500172F1B /* TicketColumnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketColumnViewController.swift; sourceTree = "<group>"; };
 		978B7ADB1D64511100172F1B /* ProjectDirectoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDirectoryTableViewCell.swift; sourceTree = "<group>"; };
 		978B7AE51D66196100172F1B /* TraskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraskService.swift; sourceTree = "<group>"; };
@@ -274,7 +272,6 @@
 				978B7AD31D62F85500172F1B /* TicketColumnViewController.swift */,
 				97F22DED1D6937F0001253B2 /* TicketCreationTableViewController.swift */,
 				97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */,
-				977B67EE1D53A0140021D8FC /* ProjectSettingsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -374,10 +371,10 @@
 		B3B131DE1D6A6005008EEF03 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				97EA970F1D6D95BD00DD0929 /* NotificationsTableViewCell.swift */,
-				97EA97111D6D95C300DD0929 /* ColorSelectorTableViewCell.swift */,
 				B3B131E31D6D83D6008EEF03 /* TitleTableViewCell.swift */,
+				97EA97111D6D95C300DD0929 /* ColorSelectorTableViewCell.swift */,
 				B3B131E51D6D83F1008EEF03 /* ColumnTableViewCell.swift */,
+				97EA970F1D6D95BD00DD0929 /* NotificationsTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -609,7 +606,6 @@
 				978B7AE81D661DFD00172F1B /* NSFetchRequest_Service.swift in Sources */,
 				978B7B431D6702DA00172F1B /* ProjectCreationTableViewController.swift in Sources */,
 				978B7B391D66DDAB00172F1B /* Project.swift in Sources */,
-				977B67EF1D53A0140021D8FC /* ProjectSettingsTableViewController.swift in Sources */,
 				978B7B311D66DC2A00172F1B /* CoreDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

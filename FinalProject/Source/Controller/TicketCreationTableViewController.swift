@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import CoreDataService
 
+// MARK: Text Field Keyboard Extension
 extension UITableViewController: UITextFieldDelegate {
     func addToolBar(textField: UITextField) {
         let toolBar = UIToolbar()
@@ -22,47 +23,25 @@ extension UITableViewController: UITextFieldDelegate {
         toolBar.sizeToFit()
         
         textField.delegate = self
+        
         textField.inputAccessoryView = toolBar
     }
     
     func donePressed(){
         view.endEditing(true)
     }
+
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UITableViewController.donePressed))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
 }
 
 class TicketCreationTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    // MARK: View Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-            
-        groupingPicker.dataSource = self
-        groupingPicker.delegate = self
-        
+    // MARK: IBActions
+    @IBAction func milestoneDataPickerShow(sender: UIDatePicker) {
         dpShowDate()
-        groupingLabel.text = groupingOptions[0]
-        
-        addToolBar(titleTextField)
-        addToolBar(descriptionTextField)
-        addToolBar(commentsTextField)
-        addToolBar(assigneeTextField)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    
-    // MARK: View Mangement
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        /*
-        if selectedTicket != nil {
-            if let tickNum: Int = selectedTicket!.ticketNumber as Int {
-                navigationItem.title = "Edit Ticket " + String(tickNum)
-            }
-        }
-        */
     }
     
     
@@ -88,7 +67,7 @@ class TicketCreationTableViewController: UITableViewController, UIPickerViewDele
                 assigneeTextField.becomeFirstResponder()
             }
         }
-
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -155,7 +134,38 @@ class TicketCreationTableViewController: UITableViewController, UIPickerViewDele
     }
     
     
-    // MARK: Properties
+    // MARK: View Mangement
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        /*
+         if selectedTicket != nil {
+            if let tickNum: Int = selectedTicket!.ticketNumber as Int {
+                navigationItem.title = "Edit Ticket " + String(tickNum)
+            }
+         }
+         */
+    }
+    
+    
+    // MARK: View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+            
+        groupingPicker.dataSource = self
+        groupingPicker.delegate = self
+        
+        dpShowDate()
+        groupingLabel.text = groupingOptions[0]
+        
+        addToolBar(titleTextField)
+        addToolBar(descriptionTextField)
+        addToolBar(commentsTextField)
+        addToolBar(assigneeTextField)
+        self.hideKeyboardWhenTappedAround()
+    }
+
+    
+    // MARK: Edit/Create Determination
     var selectedColumn: Column!
     var selectedTicket: Ticket? {
         didSet {
@@ -187,7 +197,6 @@ class TicketCreationTableViewController: UITableViewController, UIPickerViewDele
     
     
     // MARK: Properties (Private)
-    // TODO: Do I need to include variables for optional fields?
     // Required
     private var ticketTitle: String
     private var ticketMilestone: NSDate
@@ -220,13 +229,10 @@ class TicketCreationTableViewController: UITableViewController, UIPickerViewDele
     @IBOutlet var milestoneDatePicker: UIDatePicker!
     @IBOutlet var groupingPicker: UIPickerView!
     
-    // MARK: IBAction
-    @IBAction func milestoneDataPickerShow(sender: UIDatePicker) {
-        dpShowDate()
-    }
     
     // TODO: No Default Value
     // I don't want to have default values for required fields - I'd like to just have placeholder text when I create a ticket.
+    // MARK: Properties (Public)
     private static let DefaultTitle = "Unnamed Ticket"
     private static let DefaultMilestone = NSDate()
     

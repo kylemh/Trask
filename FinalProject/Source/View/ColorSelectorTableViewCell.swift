@@ -9,20 +9,7 @@
 import UIKit
 
 class ColorSelectorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
-    @IBOutlet weak var colorTextField: UITextField!
-    
-    let colorPickerData = ["Black", "White", "Red", "Blue", "Green", "Yellow", "Purple", "Pink", "Beige"]
-    var colorSelection: String!
-
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        colorSelection = colorPickerData[row]
-        colorTextField.text = colorSelection
-    }
-    
-    dynamic func pickerDidFinish(sender: AnyObject) {
-        endEditing(true)
-    }
-    
+    // MARK: View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -37,12 +24,14 @@ class ColorSelectorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPicke
         colorSelection = colorPickerData.first
         colorTextField.text = colorSelection
         
-        colorTextField.tintColor = UIColor.clearColor()
+        colorTextField.tintColor = UIColor.clearColor() //no cursor for textfield
 
         pickerView.delegate = self
         pickerView.dataSource = self
     }
 
+    
+    // MARK: Picker Functions
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -59,4 +48,19 @@ class ColorSelectorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPicke
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return colorPickerData.count
     }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        colorSelection = colorPickerData[row]
+        colorTextField.text = colorSelection
+    }
+    
+    dynamic func pickerDidFinish(sender: AnyObject) {
+        endEditing(true)
+    }
+    
+    
+    // MARK: Properties
+    @IBOutlet weak var colorTextField: UITextField!
+    let colorPickerData = ["Black", "White", "Red", "Blue", "Green", "Yellow", "Purple", "Pink", "Beige"]
+    var colorSelection: String!
 }

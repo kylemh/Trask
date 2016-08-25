@@ -11,7 +11,5 @@ import CoreData
 
 
 class Ticket: Column {
-    //static var entityName: String {
-    //    return "Ticket"
-    //}
+    
 }

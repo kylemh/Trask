@@ -9,12 +9,11 @@
 import UIKit
 
 class NotificationsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var notificationSwitch: UISwitch!
-    
+    // MARK: View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -23,4 +22,7 @@ class NotificationsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    // MARK: Properties
+    @IBOutlet weak var notificationSwitch: UISwitch!
 }
