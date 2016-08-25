@@ -232,7 +232,7 @@ class TicketCreationTableViewController: UITableViewController, UIPickerViewDele
     
     // TODO: No Default Value
     // I don't want to have default values for required fields - I'd like to just have placeholder text when I create a ticket.
-    // MARK: Properties (Public)
+    // MARK: Defaults and Enums
     private static let DefaultTitle = "Unnamed Ticket"
     private static let DefaultMilestone = NSDate()
     

@@ -114,9 +114,7 @@ class ProjectDirectoryTableViewController: UITableViewController, CreateProjectT
         super.viewDidLoad()
         
         self.title = "Project Directory"
-        
-        self.accessibilityValue = "Create Project"
-        
+                
         //setupResultsController()
     }
     
