@@ -61,6 +61,6 @@ class ColorSelectorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPicke
     
     // MARK: Properties
     @IBOutlet weak var colorTextField: UITextField!
-    let colorPickerData = ["Black", "White", "Red", "Blue", "Green", "Yellow", "Purple", "Pink", "Beige"]
+    let colorPickerData = ["Black", "White", "Red", "Blue", "Green", "Yellow", "Purple"]
     var colorSelection: String!
 }

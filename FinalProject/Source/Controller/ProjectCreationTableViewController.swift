@@ -21,26 +21,90 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         delegate?.projectCreationVCDidFinish(self)
     }
     
-    
     // MARK: CoreData Connection
     func addProject() {
-        let name = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TitleTableViewCell).titleTextField.text
-        print("Name returns as: \(name)")
-        let color = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! ColorSelectorTableViewCell).colorTextField.text
-        print("Color returns as: \(color)")
-        let notificationBool = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as! NotificationsTableViewCell).notificationSwitch.on
-        print("Switch returns as: \(notificationBool)")
-        var columns = Array<String>()
-        for row in 0...tableView(tableView, numberOfRowsInSection: 1) {
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 1))
-            print( "String(cell.dynamicType) -> \(cell.dynamicType)")
-            columns.append((tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 1)) as! ColumnTableViewCell).columnTextField.text!)
+        let projectName = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TitleTableViewCell).titleTextField.text
+        guard ((projectName?.isEmpty) != nil) else {
+            unmetReqAlert("Title Alert")
+            return
         }
-        //        TraskService.addProject(name: , mainColor: NSObject, textColor: NSObject, possibleColumnsArray: [String], notificationsStatus: Bool, orderIndex: Int)
-        //        TraskService.addProject(<#T##TraskService#>)
-        self.navigationController?.popViewControllerAnimated(true)
+        
+        let mainColor = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! ColorSelectorTableViewCell).colorTextField.text
+        //let projectColor = colorConversion(colorName!)
+        let textColor = getTextColorForTheme(mainColor!)
+        
+        let projectNotifications = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as! NotificationsTableViewCell).notificationSwitch.on
+        
+        var columnNameArray = Array<String>()
+        for row in 2...columnCount+1 {
+            let columnName = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 1)) as! ColumnTableViewCell).columnTextField.text!
+            guard !columnName.isEmpty else {
+                unmetReqAlert("Column Alert")
+                return
+            }
+            columnNameArray.append(columnName)
+        }
+        
+        //try TraskService.sharedTraskService.addProject(projectName!, mainColor!, textColor, columnNameArray, projectNotifications, 2)
+        //self.navigationController?.popViewControllerAnimated(true)
     }
     
+    //Requirements Alert
+    func unmetReqAlert(alertID: String) {
+        switch alertID {
+        case "Column Alert":
+            let alertController = UIAlertController(title: "Missing Column Name(s)", message: "Please, give a name to every column.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(alertController, animated: true, completion: nil)
+        case "Title Alert":
+            let alertController = UIAlertController(title: "Missing Project Title", message: "Please, give your project a name.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(alertController, animated: true, completion: nil)
+        default:
+            let alertController = UIAlertController(title: "Requirements Unmet", message: nil, preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    //Convert color name sting to UIColor for Data Service
+    func colorConversion(colorName: String) -> UIColor {
+        switch colorName {
+            case "Black":
+                return UIColor.blackColor()
+            case "White":
+                return UIColor.whiteColor()
+            case "Red":
+                return UIColor.redColor()
+            case "Blue":
+                return UIColor.blueColor()
+            case "Green":
+                return UIColor.greenColor()
+            case "Yellow":
+                return UIColor.yellowColor()
+            case "Purple":
+                return UIColor.purpleColor()
+        }
+    }
+    
+    func getTextColorForTheme(colorName: String) -> String {
+        switch colorName {
+        case "Black":
+            return "White"
+        case "White":
+            return "Black"
+        case "Red":
+            return "Red"
+        case "Blue":
+            return "White"
+        case "Green":
+            return "Black"
+        case "Yellow":
+            return "Black"
+        case "Purple":
+            return "White"
+        }
+    }
     
     // MARK: Table View DataSource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -52,7 +116,7 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         case .DetailSection:
             return DetailSection.AllRows.count
         case .ColumnSection:
-            return columnCount < 7 ? columnCount + 1 : columnCount
+            return columnCount <= 6 ? columnCount + 2 : columnCount
         }
     }
     
@@ -73,10 +137,28 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         case .ColumnSection:
             switch ColumnSection.AllRows[indexPath.row] {
             case .AddColumnRow:
-                cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationAddColumnCell") as UITableViewCell!
-                if columnCount > 6 {
+                if columnCount >= 6 {
+                    cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationAddColumnCell") as UITableViewCell!
                     cell.selectionStyle = UITableViewCellSelectionStyle.None
                     cell.userInteractionEnabled = false
+                    cell.backgroundColor = UIColor.lightGrayColor()
+                } else {
+                    cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationAddColumnCell") as UITableViewCell!
+                    cell.selectionStyle = UITableViewCellSelectionStyle.Default
+                    cell.userInteractionEnabled = true
+                    cell.backgroundColor = UIColor.greenColor()
+                }
+            case .RemoveColumnRow:
+                if columnCount >= 4 {
+                    cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationRemoveColumnCell") as UITableViewCell!
+                    cell.selectionStyle = UITableViewCellSelectionStyle.Default
+                    cell.userInteractionEnabled = true
+                    cell.backgroundColor = UIColor.redColor()
+                } else {
+                    cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationRemoveColumnCell") as UITableViewCell!
+                    cell.selectionStyle = UITableViewCellSelectionStyle.None
+                    cell.userInteractionEnabled = false
+                    cell.backgroundColor = UIColor.lightGrayColor()
                 }
             case .Column1Row:
                 cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
@@ -85,30 +167,13 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
             case .Column3Row:
                 cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
             case .Column4Row:
-                if indexPath.row <= columnCount {
-                    cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
-                } else {
-                    //
-                }
+                cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
             case .Column5Row:
-                if indexPath.row <= columnCount {
-                    cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
-                } else {
-                    //
-                }
+                cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
             case .Column6Row:
-                if indexPath.row <= columnCount {
-                    cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
-                } else {
-                    //
-                }
+                cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationColumnCell") as UITableViewCell!
             }
-            cell = tableView.dequeueReusableCellWithIdentifier("ProjectCreationAddColumnCell") as UITableViewCell!
-            //if indexPath.row < columnCount {
-            //print("section is \(indexPath.section)")
-            //print("row is \(indexPath.row)")
         }
-        
         return cell
     }
     
@@ -128,28 +193,39 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         case .ColumnSection:
             switch ColumnSection.AllRows[indexPath.row] {
             case .AddColumnRow:
-                if columnCount < 7 {
+                if columnCount <= 6 {
                     columnCount += 1
+                    tableView.reloadData()
+                }
+            case .RemoveColumnRow:
+                if columnCount >= 4 {
+                    columnCount -= 1
                     tableView.reloadData()
                 }
             case .Column1Row:
                 let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ColumnTableViewCell
                 cell.columnTextField.becomeFirstResponder()
+                cell.columnTextField.editing
             case .Column2Row:
                 let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ColumnTableViewCell
                 cell.columnTextField.becomeFirstResponder()
+                cell.columnTextField.editing
             case .Column3Row:
                 let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ColumnTableViewCell
                 cell.columnTextField.becomeFirstResponder()
+                cell.columnTextField.editing
             case .Column4Row:
                 let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ColumnTableViewCell
                 cell.columnTextField.becomeFirstResponder()
+                cell.columnTextField.editing
             case .Column5Row:
                 let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ColumnTableViewCell
                 cell.columnTextField.becomeFirstResponder()
+                cell.columnTextField.editing
             case .Column6Row:
                 let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ColumnTableViewCell
                 cell.columnTextField.becomeFirstResponder()
+                cell.columnTextField.editing
             }
         }
         
@@ -188,6 +264,7 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
     
     enum ColumnSection {
         case AddColumnRow
+        case RemoveColumnRow
         case Column1Row
         case Column2Row
         case Column3Row
@@ -195,7 +272,7 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         case Column5Row
         case Column6Row
         
-        static let AllRows: Array<ColumnSection> = [.AddColumnRow, .Column1Row, .Column2Row, .Column3Row, .Column4Row, .Column5Row, .Column6Row]
+        static let AllRows: Array<ColumnSection> = [.AddColumnRow, .RemoveColumnRow, .Column1Row, .Column2Row, .Column3Row, .Column4Row, .Column5Row, .Column6Row]
     }
     
     
