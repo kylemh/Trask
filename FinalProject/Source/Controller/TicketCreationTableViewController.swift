@@ -172,15 +172,15 @@ class TicketCreationTableViewController: UITableViewController, UIPickerViewDele
             if let someTicket = selectedTicket { // Editing a ticket
                 // TODO: Fetched Property: ticketNumber... how do I set it here?
                 // Required
-                ticketTitle = someTicket.ticketTitle
-                ticketMilestone = someTicket.ticketMilestone
+                ticketTitle = someTicket.name
+                ticketMilestone = someTicket.milestoneDate
                 //ticketNumber = someTicket.ticketNumber
                 
                 // Optional
-                ticketAssignee = someTicket.ticketAssignee
-                ticketComments = someTicket.ticketComments
-                ticketDescription = someTicket.ticketDetail
-                ticketGroupingLabel = someTicket.ticketLabel
+                ticketAssignee = someTicket.assignee
+                ticketComments = someTicket.comments
+                ticketDescription = someTicket.detailedInfo
+                ticketGroupingLabel = someTicket.groupingLabel
             } else { // Creating a ticket
                 ticketTitle = TicketCreationTableViewController.DefaultTitle
                 let dateComponents = NSDateComponents()

@@ -13,11 +13,17 @@
 		562BB1421B55627000B73F46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 562BB1401B55627000B73F46 /* LaunchScreen.xib */; };
 		562BB14E1B55627000B73F46 /* FinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BB14D1B55627000B73F46 /* FinalProjectTests.swift */; };
 		564F70A61BEABDA3009D186E /* FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564F70A51BEABDA3009D186E /* FinalProjectUITests.swift */; };
-		56BEFEBE1B68C3E0006F0664 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFEBC1B68C3E0006F0664 /* Model.xcdatamodeld */; };
 		56BEFF381B68CE0A006F0664 /* CoreDataService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BEFF2D1B68CE0A006F0664 /* CoreDataService.framework */; };
 		56BEFF411B68CE0A006F0664 /* CoreDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF401B68CE0A006F0664 /* CoreDataServiceTests.swift */; };
 		56BEFF441B68CE0A006F0664 /* CoreDataService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BEFF2D1B68CE0A006F0664 /* CoreDataService.framework */; };
 		56BEFF451B68CE0A006F0664 /* CoreDataService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56BEFF2D1B68CE0A006F0664 /* CoreDataService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		971DE5AF1D7450D800DA24A9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 971DE5AD1D7450D800DA24A9 /* Model.xcdatamodeld */; };
+		971DE5B61D74561A00DA24A9 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DE5B01D74561A00DA24A9 /* Ticket+CoreDataProperties.swift */; };
+		971DE5B71D74561A00DA24A9 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DE5B11D74561A00DA24A9 /* Ticket.swift */; };
+		971DE5B81D74561A00DA24A9 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DE5B21D74561A00DA24A9 /* Project+CoreDataProperties.swift */; };
+		971DE5B91D74561A00DA24A9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DE5B31D74561A00DA24A9 /* Project.swift */; };
+		971DE5BA1D74561A00DA24A9 /* Column+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DE5B41D74561A00DA24A9 /* Column+CoreDataProperties.swift */; };
+		971DE5BB1D74561A00DA24A9 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971DE5B51D74561A00DA24A9 /* Column.swift */; };
 		978B7AD41D62F85500172F1B /* TicketColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7AD31D62F85500172F1B /* TicketColumnViewController.swift */; };
 		978B7ADD1D64511100172F1B /* ProjectDirectoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7ADB1D64511100172F1B /* ProjectDirectoryTableViewCell.swift */; };
 		978B7AE61D66196100172F1B /* TraskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7AE51D66196100172F1B /* TraskService.swift */; };
@@ -29,14 +35,7 @@
 		978B7B2B1D66DBD600172F1B /* NSFetchRequest_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF531B68CE58006F0664 /* NSFetchRequest_Service.swift */; };
 		978B7B2C1D66DBD800172F1B /* NSEntityDescription_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */; };
 		978B7B2D1D66DBDA00172F1B /* NamedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF581B68CE58006F0664 /* NamedEntity.swift */; };
-		978B7B2E1D66DC1A00172F1B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFEBC1B68C3E0006F0664 /* Model.xcdatamodeld */; };
 		978B7B311D66DC2A00172F1B /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BEFF501B68CE58006F0664 /* CoreDataService.swift */; };
-		978B7B381D66DDAB00172F1B /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B321D66DDAB00172F1B /* Project+CoreDataProperties.swift */; };
-		978B7B391D66DDAB00172F1B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B331D66DDAB00172F1B /* Project.swift */; };
-		978B7B3A1D66DDAB00172F1B /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B341D66DDAB00172F1B /* Ticket+CoreDataProperties.swift */; };
-		978B7B3B1D66DDAB00172F1B /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B351D66DDAB00172F1B /* Ticket.swift */; };
-		978B7B3C1D66DDAB00172F1B /* Columns+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B361D66DDAB00172F1B /* Columns+CoreDataProperties.swift */; };
-		978B7B3D1D66DDAB00172F1B /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B371D66DDAB00172F1B /* Column.swift */; };
 		978B7B431D6702DA00172F1B /* ProjectCreationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978B7B421D6702DA00172F1B /* ProjectCreationTableViewController.swift */; };
 		97B552D51D4F4DDC00621F98 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */; };
 		97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B552D61D4F4E1100621F98 /* MenuViewController.swift */; };
@@ -114,7 +113,6 @@
 		564F70A31BEABDA3009D186E /* FinalProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		564F70A51BEABDA3009D186E /* FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectUITests.swift; sourceTree = "<group>"; };
 		564F70A71BEABDA3009D186E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56BEFEBD1B68C3E0006F0664 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		56BEFF2D1B68CE0A006F0664 /* CoreDataService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56BEFF371B68CE0A006F0664 /* CoreDataServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56BEFF3F1B68CE0A006F0664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,15 +123,16 @@
 		56BEFF521B68CE58006F0664 /* NSEntityDescription_Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription_Service.swift; sourceTree = "<group>"; };
 		56BEFF531B68CE58006F0664 /* NSFetchRequest_Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchRequest_Service.swift; sourceTree = "<group>"; };
 		56BEFF581B68CE58006F0664 /* NamedEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamedEntity.swift; sourceTree = "<group>"; };
+		971DE5AE1D7450D800DA24A9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		971DE5B01D74561A00DA24A9 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataProperties.swift"; path = "FinalProject/Source/Model/Ticket+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		971DE5B11D74561A00DA24A9 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticket.swift; path = FinalProject/Source/Model/Ticket.swift; sourceTree = SOURCE_ROOT; };
+		971DE5B21D74561A00DA24A9 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Project+CoreDataProperties.swift"; path = "FinalProject/Source/Model/Project+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		971DE5B31D74561A00DA24A9 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Project.swift; path = FinalProject/Source/Model/Project.swift; sourceTree = SOURCE_ROOT; };
+		971DE5B41D74561A00DA24A9 /* Column+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Column+CoreDataProperties.swift"; path = "FinalProject/Source/Model/Column+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		971DE5B51D74561A00DA24A9 /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Column.swift; path = FinalProject/Source/Model/Column.swift; sourceTree = SOURCE_ROOT; };
 		978B7AD31D62F85500172F1B /* TicketColumnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketColumnViewController.swift; sourceTree = "<group>"; };
 		978B7ADB1D64511100172F1B /* ProjectDirectoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDirectoryTableViewCell.swift; sourceTree = "<group>"; };
 		978B7AE51D66196100172F1B /* TraskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraskService.swift; sourceTree = "<group>"; };
-		978B7B321D66DDAB00172F1B /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		978B7B331D66DDAB00172F1B /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		978B7B341D66DDAB00172F1B /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		978B7B351D66DDAB00172F1B /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
-		978B7B361D66DDAB00172F1B /* Columns+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Columns+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		978B7B371D66DDAB00172F1B /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		978B7B421D6702DA00172F1B /* ProjectCreationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCreationTableViewController.swift; sourceTree = "<group>"; };
 		97B552D41D4F4DDC00621F98 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		97B552D61D4F4E1100621F98 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -242,9 +241,9 @@
 			children = (
 				562BB13E1B55627000B73F46 /* Images.xcassets */,
 				562BB1361B55627000B73F46 /* Info.plist */,
+				971DE5AD1D7450D800DA24A9 /* Model.xcdatamodeld */,
 				562BB1401B55627000B73F46 /* LaunchScreen.xib */,
 				562BB13B1B55627000B73F46 /* Main.storyboard */,
-				56BEFEBC1B68C3E0006F0664 /* Model.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -350,12 +349,12 @@
 		975DCA391D58F92C0017042A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				978B7B321D66DDAB00172F1B /* Project+CoreDataProperties.swift */,
-				978B7B331D66DDAB00172F1B /* Project.swift */,
-				978B7B341D66DDAB00172F1B /* Ticket+CoreDataProperties.swift */,
-				978B7B351D66DDAB00172F1B /* Ticket.swift */,
-				978B7B361D66DDAB00172F1B /* Columns+CoreDataProperties.swift */,
-				978B7B371D66DDAB00172F1B /* Column.swift */,
+				971DE5B01D74561A00DA24A9 /* Ticket+CoreDataProperties.swift */,
+				971DE5B11D74561A00DA24A9 /* Ticket.swift */,
+				971DE5B21D74561A00DA24A9 /* Project+CoreDataProperties.swift */,
+				971DE5B31D74561A00DA24A9 /* Project.swift */,
+				971DE5B41D74561A00DA24A9 /* Column+CoreDataProperties.swift */,
+				971DE5B51D74561A00DA24A9 /* Column.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -583,29 +582,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				978B7AE61D66196100172F1B /* TraskService.swift in Sources */,
+				971DE5BB1D74561A00DA24A9 /* Column.swift in Sources */,
 				978B7AE71D661A2700172F1B /* NamedEntity.swift in Sources */,
 				97B552D51D4F4DDC00621F98 /* NotificationsViewController.swift in Sources */,
 				562BB1381B55627000B73F46 /* AppDelegate.swift in Sources */,
-				978B7B3D1D66DDAB00172F1B /* Column.swift in Sources */,
 				978B7AE91D661E0000172F1B /* NSEntityDescription_Service.swift in Sources */,
 				97F22DEE1D6937F0001253B2 /* TicketCreationTableViewController.swift in Sources */,
-				56BEFEBE1B68C3E0006F0664 /* Model.xcdatamodeld in Sources */,
 				97EA97101D6D95BD00DD0929 /* NotificationsTableViewCell.swift in Sources */,
 				978B7ADD1D64511100172F1B /* ProjectDirectoryTableViewCell.swift in Sources */,
-				978B7B3B1D66DDAB00172F1B /* Ticket.swift in Sources */,
+				971DE5B81D74561A00DA24A9 /* Project+CoreDataProperties.swift in Sources */,
 				97EA97121D6D95C300DD0929 /* ColorSelectorTableViewCell.swift in Sources */,
 				97B552DD1D4F4EA800621F98 /* TicketsPageViewController.swift in Sources */,
-				978B7B3C1D66DDAB00172F1B /* Columns+CoreDataProperties.swift in Sources */,
-				978B7B3A1D66DDAB00172F1B /* Ticket+CoreDataProperties.swift in Sources */,
+				971DE5BA1D74561A00DA24A9 /* Column+CoreDataProperties.swift in Sources */,
 				97B552D71D4F4E1100621F98 /* MenuViewController.swift in Sources */,
-				978B7B381D66DDAB00172F1B /* Project+CoreDataProperties.swift in Sources */,
 				B3B131E61D6D83F1008EEF03 /* ColumnTableViewCell.swift in Sources */,
 				B3B131E41D6D83D6008EEF03 /* TitleTableViewCell.swift in Sources */,
+				971DE5B91D74561A00DA24A9 /* Project.swift in Sources */,
+				971DE5B61D74561A00DA24A9 /* Ticket+CoreDataProperties.swift in Sources */,
 				978B7AD41D62F85500172F1B /* TicketColumnViewController.swift in Sources */,
 				97B552DF1D4F4EC500621F98 /* ProjectDirectoryTableViewController.swift in Sources */,
 				978B7AE81D661DFD00172F1B /* NSFetchRequest_Service.swift in Sources */,
 				978B7B431D6702DA00172F1B /* ProjectCreationTableViewController.swift in Sources */,
-				978B7B391D66DDAB00172F1B /* Project.swift in Sources */,
+				971DE5AF1D7450D800DA24A9 /* Model.xcdatamodeld in Sources */,
+				971DE5B71D74561A00DA24A9 /* Ticket.swift in Sources */,
 				978B7B311D66DC2A00172F1B /* CoreDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,7 +631,6 @@
 			files = (
 				978B7B2C1D66DBD800172F1B /* NSEntityDescription_Service.swift in Sources */,
 				978B7B281D66DBC300172F1B /* CoreDataService.swift in Sources */,
-				978B7B2E1D66DC1A00172F1B /* Model.xcdatamodeld in Sources */,
 				978B7B2D1D66DBDA00172F1B /* NamedEntity.swift in Sources */,
 				978B7B2B1D66DBD600172F1B /* NSFetchRequest_Service.swift in Sources */,
 			);
@@ -995,12 +993,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		56BEFEBC1B68C3E0006F0664 /* Model.xcdatamodeld */ = {
+		971DE5AD1D7450D800DA24A9 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				56BEFEBD1B68C3E0006F0664 /* Model.xcdatamodel */,
+				971DE5AE1D7450D800DA24A9 /* Model.xcdatamodel */,
 			);
-			currentVersion = 56BEFEBD1B68C3E0006F0664 /* Model.xcdatamodel */;
+			currentVersion = 971DE5AE1D7450D800DA24A9 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

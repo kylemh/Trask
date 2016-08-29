@@ -2,7 +2,7 @@
 //  Ticket+CoreDataProperties.swift
 //  FinalProject
 //
-//  Created by Kyle Holmberg on 8/18/16.
+//  Created by Kyle Holmberg on 8/29/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,15 +14,19 @@ import CoreData
 
 extension Ticket {
 
-    @NSManaged var ticketAssignee: String?
-    @NSManaged var ticketComments: String?
-    @NSManaged var ticketCreationDate: NSDate
-    @NSManaged var ticketDetail: String?
-    @NSManaged var ticketLabel: String?
-    @NSManaged var ticketMilestone: NSDate
-    @NSManaged var ticketNumber: NSNumber
-    @NSManaged var ticketTitle: String
+    //Optional Attributes
+    @NSManaged var creationDate: NSDate
+    @NSManaged var milestoneDate: NSDate
+    @NSManaged var number: NSNumber
+    @NSManaged var name: String
     
-    @NSManaged var parentColumn: Column
+    //Non-Optional Attributes
+    @NSManaged var assignee: String?
+    @NSManaged var comments: String?
+    @NSManaged var detailedInfo: String?
+    @NSManaged var groupingLabel: String?
+    
+    //Relationships
+    @NSManaged var parentColumn: NSManagedObject
 
 }

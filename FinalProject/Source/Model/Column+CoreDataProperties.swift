@@ -2,7 +2,7 @@
 //  Column+CoreDataProperties.swift
 //  FinalProject
 //
-//  Created by Kyle Holmberg on 8/18/16.
+//  Created by Kyle Holmberg on 8/29/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,10 +14,12 @@ import CoreData
 
 extension Column {
 
-    @NSManaged var columnName: String
-    @NSManaged var columnTicketCount: NSNumber
-    @NSManaged var columnIndex: NSNumber
+    //Attributes
+    @NSManaged var index: NSNumber
+    @NSManaged var name: String
+    @NSManaged var ticketCount: NSNumber
     
+    //Relationships
     @NSManaged var childTicket: NSSet?
     @NSManaged var parentProject: Project
 

@@ -2,7 +2,7 @@
 //  Project+CoreDataProperties.swift
 //  FinalProject
 //
-//  Created by Kyle Holmberg on 8/18/16.
+//  Created by Kyle Holmberg on 8/29/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,13 +14,16 @@ import CoreData
 
 extension Project {
 
-    @NSManaged var projectColorMain: String
-    @NSManaged var projectColorText: String
-    @NSManaged var projectName: String
-    @NSManaged var projectNotifications: NSNumber
-    @NSManaged var projectCreationDate: NSDate
-    @NSManaged var projectTicketCount: NSNumber
+    //Attributes
+    @NSManaged var name: String
+    @NSManaged var index: NSNumber
+    @NSManaged var notificationsBool: NSNumber
+    @NSManaged var mainColor: String
+    @NSManaged var textColor: String
+    @NSManaged var creationDate: NSDate
+    @NSManaged var ticketCount: NSNumber
     
+    //Relationships
     @NSManaged var childColumn: NSSet
 
 }

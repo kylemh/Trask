@@ -14,7 +14,7 @@ class TraskService {
     // MARK: Projects Fetch
     func fetchedResultsControllerForProjectList() throws -> NSFetchedResultsController {
         let fetchRequest = NSFetchRequest(namedEntity: Project.self)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "projectCreationDate", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         //fetchRequest.fetchBatchSize = # means that the fetch faults # requests at a time
         //fetchRequest.fetchLimit = # means that the fetchRequest stops requesting after # fetchesk
         
@@ -28,7 +28,7 @@ class TraskService {
     
     // MARK: Columns Fetch
     func fetchedResultsControllerForColumnsInProject(project: Project) throws -> NSFetchedResultsController {
-        let fetchRequest = NSFetchRequest(namedEntity: Project.self)
+        let fetchRequest = NSFetchRequest(namedEntity: Column.self)
         fetchRequest.predicate = NSPredicate(format: "parentProject == %@", project)
         
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
@@ -41,7 +41,7 @@ class TraskService {
     
     // MARK: Tickets Fetch
     func fetchedResultsControllerForTicketsInColumn(column: Column) throws -> NSFetchedResultsController {
-        let fetchRequest = NSFetchRequest(namedEntity: Column.self)
+        let fetchRequest = NSFetchRequest(namedEntity: Ticket.self)
         fetchRequest.predicate = NSPredicate(format: "parentColumn == %@", column)
         
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
@@ -53,7 +53,7 @@ class TraskService {
  
     
     // MARK: Add Project to Directory
-    func addProject(name: String, mainColor: String, textColor: String, notificationsStatus: Bool, columnsArray: [String]) throws {
+    func addProject(name: String, mainColor: String, textColor: String, notificationsStatus: Bool, columnsArray: [String], orderIndex: Int) throws {
         //Check Requirements
         guard !name.isEmpty else {
             throw Error.EmptyString
@@ -65,12 +65,13 @@ class TraskService {
         let project = NSEntityDescription.insertNewObjectForNamedEntity(Project.self, inManagedObjectContext: context)
         
         //Attributes
-        project.projectName = name
-        project.projectColorMain = mainColor
-        project.projectColorText = textColor
-        project.projectNotifications = notificationsStatus
-        project.projectCreationDate = NSDate()
-        project.projectTicketCount = 0 //Ticket Count is 0 for new Project
+        project.name = name
+        project.mainColor = mainColor
+        project.textColor = textColor
+        project.notificationsBool = notificationsStatus
+        project.creationDate = NSDate()
+        project.ticketCount = 0 //Ticket Count is 0 for new Project
+        project.index = orderIndex // TODO: Implement Order Index
         
         print("Finished Attributes")
         
@@ -106,9 +107,9 @@ class TraskService {
         let column = NSEntityDescription.insertNewObjectForNamedEntity(Column.self, inManagedObjectContext: context)
         
         //Attributes
-        column.columnName = name
-        column.columnIndex = index
-        column.columnTicketCount = 0  //Ticket Count is 0 for new Column
+        column.name = name
+        column.index = index
+        column.ticketCount = 0  //Ticket Count is 0 for new Column
         
         //Relationship
         column.parentProject = parent
@@ -133,16 +134,16 @@ class TraskService {
         let ticket = NSEntityDescription.insertNewObjectForNamedEntity(Ticket.self, inManagedObjectContext: context)
         
         //Attributes
-        ticket.ticketTitle = name
-        ticket.ticketAssignee = assignee
-        ticket.ticketComments = comments
-        ticket.ticketDetail = detail
-        ticket.ticketLabel = label
-        ticket.ticketMilestone = milestone
-        ticket.ticketCreationDate = NSDate()
-        let newTicketCount = (column.parentProject.projectTicketCount as Int) + 1
-        column.parentProject.projectTicketCount = newTicketCount
-        ticket.ticketNumber = newTicketCount
+        ticket.name = name
+        ticket.assignee = assignee
+        ticket.comments = comments
+        ticket.detailedInfo = detail
+        ticket.groupingLabel = label
+        ticket.milestoneDate = milestone
+        ticket.creationDate = NSDate()
+        let newTicketCount = (column.parentProject.ticketCount as Int) + 1
+        column.parentProject.ticketCount = newTicketCount
+        ticket.number = newTicketCount
         
         //Relationship
         ticket.parentColumn = column
@@ -174,10 +175,10 @@ class TraskService {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         
         //Attribute Changes
-        project.projectName = newName
-        project.projectColorMain = newMainColor
-        project.projectColorText = newTextColor
-        project.projectNotifications = newNotificationStatus
+        project.name = newName
+        project.mainColor = newMainColor
+        project.textColor = newTextColor
+        project.notificationsBool = newNotificationStatus
         
         try context.save()
         
@@ -192,12 +193,12 @@ class TraskService {
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         
         //Attribute Changes
-        ticket.ticketTitle = newName
-        ticket.ticketAssignee = newAssignee
-        ticket.ticketComments = newComment
-        ticket.ticketDetail = newDetail
-        ticket.ticketLabel = newLabel
-        ticket.ticketMilestone = newMilestone
+        ticket.name = newName
+        ticket.assignee = newAssignee
+        ticket.comments = newComment
+        ticket.detailedInfo = newDetail
+        ticket.groupingLabel = newLabel
+        ticket.milestoneDate = newMilestone
         
         try context.save()
         
@@ -210,11 +211,11 @@ class TraskService {
     // MARK: Reindex Column
     func reindexColumns(columns: Array<Column>, shiftForward: Bool, withSaveCompletionHandler saveCompletionHandler: SaveCompletionHandler? = nil) throws {
         for column in columns {
-            let currentOrderIndex = column.columnIndex.integerValue
+            let currentOrderIndex = column.index.integerValue
             if shiftForward {
-                column.columnIndex = currentOrderIndex + 1
+                column.index = currentOrderIndex + 1
             } else {
-                column.columnIndex = currentOrderIndex - 1
+                column.index = currentOrderIndex - 1
             }
         }
         

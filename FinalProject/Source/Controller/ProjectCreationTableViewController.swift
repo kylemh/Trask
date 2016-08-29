@@ -23,10 +23,10 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
     // MARK: CoreData Connection
     func addProject() {
         
-        let projectName = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TitleTableViewCell).titleTextField.text
-        let projectColor = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! ColorSelectorTableViewCell).colorTextField.text
-        let projectTextColor = getTextColorForTheme(projectColor!)
-        let projectNotifications = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as! NotificationsTableViewCell).notificationSwitch.on
+        let name = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TitleTableViewCell).titleTextField.text
+        let mainColor = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! ColorSelectorTableViewCell).colorTextField.text
+        let textColor = getTextColorForTheme(mainColor!)
+        let notificationsBool = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as! NotificationsTableViewCell).notificationSwitch.on
         
         //Get Project's Column Names
         var columnArray = Array<String>()
@@ -38,8 +38,8 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         //Add to CoreData
         do {
             print("Getting to the do clause properly, but context isnt working in the TraskService file")
-            //try TraskService.sharedTraskService.addProject(projectName!, mainColor: projectColor!, textColor: projectTextColor, notificationsStatus: projectNotifications, columnsArray: columnArray)
-            //delegate?.projectCreationVCDidFinish(self)
+            try TraskService.sharedTraskService.addProject(name!, mainColor: mainColor!, textColor: textColor, notificationsStatus: notificationsBool, columnsArray: columnArray, orderIndex: 0)
+            delegate?.projectCreationVCDidFinish(self)
         } catch {
             let alertController = UIAlertController(title: "Empty Text Fields", message: "Please be certain you've named the project and given a name to every column.", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
