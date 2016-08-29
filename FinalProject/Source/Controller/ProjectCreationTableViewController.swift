@@ -18,56 +18,38 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
     // MARK: IBActions
     @IBAction private func saveProjectButton(sender: AnyObject) {
         addProject()
-        delegate?.projectCreationVCDidFinish(self)
     }
     
     // MARK: CoreData Connection
     func addProject() {
+        
         let projectName = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TitleTableViewCell).titleTextField.text
-        guard ((projectName?.isEmpty) != nil) else {
-            unmetReqAlert("Title Alert")
-            return
-        }
-        
-        let mainColor = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! ColorSelectorTableViewCell).colorTextField.text
-        //let projectColor = colorConversion(colorName!)
-        let textColor = getTextColorForTheme(mainColor!)
-        
+        let projectColor = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as! ColorSelectorTableViewCell).colorTextField.text
+        let projectTextColor = getTextColorForTheme(projectColor!)
         let projectNotifications = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as! NotificationsTableViewCell).notificationSwitch.on
         
-        var columnNameArray = Array<String>()
+        //Get Project's Column Names
+        var columnArray = Array<String>()
         for row in 2...columnCount+1 {
             let columnName = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 1)) as! ColumnTableViewCell).columnTextField.text!
-            guard !columnName.isEmpty else {
-                unmetReqAlert("Column Alert")
-                return
-            }
-            columnNameArray.append(columnName)
+            columnArray.append(columnName)
         }
         
-        //try TraskService.sharedTraskService.addProject(projectName!, mainColor!, textColor, columnNameArray, projectNotifications, 2)
-        //self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    //Requirements Alert
-    func unmetReqAlert(alertID: String) {
-        switch alertID {
-        case "Column Alert":
-            let alertController = UIAlertController(title: "Missing Column Name(s)", message: "Please, give a name to every column.", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            presentViewController(alertController, animated: true, completion: nil)
-        case "Title Alert":
-            let alertController = UIAlertController(title: "Missing Project Title", message: "Please, give your project a name.", preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            presentViewController(alertController, animated: true, completion: nil)
-        default:
-            let alertController = UIAlertController(title: "Requirements Unmet", message: nil, preferredStyle: .Alert)
+        //Add to CoreData
+        do {
+            print("Getting to the do clause properly, but context isnt working in the TraskService file")
+            //try TraskService.sharedTraskService.addProject(projectName!, mainColor: projectColor!, textColor: projectTextColor, notificationsStatus: projectNotifications, columnsArray: columnArray)
+            //delegate?.projectCreationVCDidFinish(self)
+        } catch {
+            let alertController = UIAlertController(title: "Empty Text Fields", message: "Please be certain you've named the project and given a name to every column.", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
+    /*
     //Convert color name sting to UIColor for Data Service
+    //put:: let projectColor = colorConversion(colorName!) in addProject() if UIColor in Data Model instead of String
     func colorConversion(colorName: String) -> UIColor {
         switch colorName {
             case "Black":
@@ -84,8 +66,11 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
                 return UIColor.yellowColor()
             case "Purple":
                 return UIColor.purpleColor()
+            default:
+                return UIColor.blackColor()
         }
     }
+    */
     
     func getTextColorForTheme(colorName: String) -> String {
         switch colorName {
@@ -102,6 +87,8 @@ class ProjectCreationTableViewController: UITableViewController, NSFetchedResult
         case "Yellow":
             return "Black"
         case "Purple":
+            return "White"
+        default:
             return "White"
         }
     }

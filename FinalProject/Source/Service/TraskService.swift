@@ -53,7 +53,14 @@ class TraskService {
  
     
     // MARK: Add Project to Directory
-    func addProject(name: String, mainColor: String, textColor: String, possibleColumnsArray: [String], notificationsStatus: Bool, orderIndex: Int) throws {
+    func addProject(name: String, mainColor: String, textColor: String, notificationsStatus: Bool, columnsArray: [String]) throws {
+        //Check Requirements
+        guard !name.isEmpty else {
+            throw Error.EmptyString
+        }
+        
+        //Context
+        // TODO: Error occuring with let context
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let project = NSEntityDescription.insertNewObjectForNamedEntity(Project.self, inManagedObjectContext: context)
         
@@ -65,14 +72,20 @@ class TraskService {
         project.projectCreationDate = NSDate()
         project.projectTicketCount = 0 //Ticket Count is 0 for new Project
         
+        print("Finished Attributes")
+        
         /* Handling Variable Amount of Columns */
-        let columnSet = NSSet(array: possibleColumnsArray)
+        let columnSet = NSSet(array: columnsArray)
+        
+        print("Finished creating columnSet")
         
         var i: Int = 0
         for column in columnSet {
             try addColumn(column as! String, index: i, parent: project)
             i = i + 1
         }
+        
+        print("About to try context save")
         try context.save()
         
         CoreDataService.sharedCoreDataService.saveRootContext {
@@ -83,6 +96,12 @@ class TraskService {
     
     // MARK: Add Column to Project
     func addColumn(name: String, index: Int, parent: Project) throws {
+        //Check Requirements
+        guard !name.isEmpty else {
+            throw Error.EmptyString
+        }
+        
+        //Context
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let column = NSEntityDescription.insertNewObjectForNamedEntity(Column.self, inManagedObjectContext: context)
         
@@ -104,6 +123,12 @@ class TraskService {
     
     // MARK: Add Ticket to Column
     func addTicket(name: String, assignee: String?, comments: String?, detail: String?, label: String?, milestone: NSDate, column: Column) throws {
+        //Requirements
+        guard !name.isEmpty else {
+            throw Error.EmptyString
+        }
+        
+        //Context
         let context = CoreDataService.sharedCoreDataService.mainQueueContext
         let ticket = NSEntityDescription.insertNewObjectForNamedEntity(Ticket.self, inManagedObjectContext: context)
         
@@ -237,6 +262,12 @@ class TraskService {
     
     // MARK: Initialization
     private init() {
+    }
+    
+    
+    // MARK: Error Enum
+    private enum Error : ErrorType {
+        case EmptyString
     }
     
     
