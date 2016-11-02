@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
+    <entity name="Column" representedClassName=".Column" syncable="YES">
+        <attribute name="index" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="ticketCount" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="childTicket" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="parentColumn" inverseEntity="Ticket" syncable="YES"/>
+        <relationship name="parentProject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="childColumn" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="Project" representedClassName=".Project" syncable="YES">
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="index" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="mainColor" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="notificationsBool" attributeType="Boolean" syncable="YES"/>
+        <attribute name="textColor" attributeType="String" syncable="YES"/>
+        <attribute name="ticketCount" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="childColumn" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Column" inverseName="parentProject" inverseEntity="Column" syncable="YES"/>
+    </entity>
+    <entity name="Ticket" representedClassName=".Ticket" syncable="YES">
+        <attribute name="assignee" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="detailedInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupingLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="milestoneDate" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="number" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="parentColumn" maxCount="1" deletionRule="Nullify" destinationEntity="Column" inverseName="childTicket" inverseEntity="Column" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Project" positionX="-306" positionY="-54" width="128" height="163"/>
+        <element name="Ticket" positionX="234" positionY="-45" width="128" height="178"/>
+        <element name="Column" positionX="-47" positionY="-18" width="128" height="118"/>
+    </elements>
+</model>

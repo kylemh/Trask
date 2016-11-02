@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7490B3AAB194A3223AA592249BEB37C835BA8116",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7490B3AAB194A3223AA592249BEB37C835BA8116" : 9223372036854775807,
+    "BED2F00AB4A6C9418AC0FDE9A4581ED47FBC94CE" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5CCC6534-84B3-4B72-9371-620CDD59FFAB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7490B3AAB194A3223AA592249BEB37C835BA8116" : "finalProject\/",
+    "BED2F00AB4A6C9418AC0FDE9A4581ED47FBC94CE" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Trask",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Trask.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git-iosdev:s9\/finalProject",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7490B3AAB194A3223AA592249BEB37C835BA8116"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/duskykmh\/iOS-Programming-Class.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BED2F00AB4A6C9418AC0FDE9A4581ED47FBC94CE"
+    }
+  ]
+}
